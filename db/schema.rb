@@ -28,6 +28,10 @@ ActiveRecord::Schema.define(version: 2019_06_04_000139) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.bigint "department_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "age"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["department_id"], name: "index_users_on_department_id"
