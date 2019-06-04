@@ -2,8 +2,19 @@ require 'csv'
 require 'faker'
 require 'activerecord-reset-pk-sequence'
 
+Participation.destroy_all
+Event.destroy_all
+Category.destroy_all
 Department.destroy_all
+User.destroy_all
+
+
+
+Participation.destroy_all
 Department.reset_pk_sequence
+Category.reset_pk_sequence
+User.reset_pk_sequence
+Event.reset_pk_sequence
 
 ### Department seed ##
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'departments_names.csv'))
@@ -17,10 +28,11 @@ puts "#{Department.all.count} departments created"
 ### Category seed ###
 
 categories = ["Sport", "Art", "Music", "Cooking", "Science", "Animals"]
-
-Category.create!(
-  name: categories.sample
-)
+categories.each do |category|
+  Category.create!(
+    name: category
+  )
+end
 puts "#{Category.all.count} categories created"
 
 ### User seed ###
@@ -47,11 +59,13 @@ puts "#{User.all.count} users created"
     title: "Event #{i+1}",
     description: Faker::Lorem.sentence(10),
     location: Faker::TvShows::Friends.location,
-    department: d.sample
+    department: d.sample,
     start_date: DateTime.new(2019,07,rand(15..30)),
     duration: rand(4..12)*5,
-    administrator: User.all.sample
-    category: Category.sample
+    administrator: User.all.sample,
+    category: Category.all.sample
   )
   e.participants.concat(User.all.sample(4))
 end
+puts "#{Event.all.count} events created"
+puts "End of seeds"
