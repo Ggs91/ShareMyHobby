@@ -1,5 +1,4 @@
 class Event < ApplicationRecord
-  belongs_to :user
   belongs_to :department
   belongs_to :category
   belongs_to :administrator, class_name: "User"
