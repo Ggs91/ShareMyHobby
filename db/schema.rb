@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_010830) do
+ActiveRecord::Schema.define(version: 2019_06_04_092310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
@@ -31,7 +37,9 @@ ActiveRecord::Schema.define(version: 2019_06_04_010830) do
     t.bigint "department_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "category_id"
     t.index ["administrator_id"], name: "index_events_on_administrator_id"
+    t.index ["category_id"], name: "index_events_on_category_id"
     t.index ["department_id"], name: "index_events_on_department_id"
   end
 
@@ -62,6 +70,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_010830) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "categories"
   add_foreign_key "events", "departments"
   add_foreign_key "participations", "events"
   add_foreign_key "participations", "users"
