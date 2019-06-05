@@ -16,7 +16,22 @@ class EventController < ApplicationController
   	end
 
   	def create
-   
+		#@event.category_id = params[:category_id] 
+		#@event.administrator_id = params[:administrator_id] 
+		#@event.department_id = params[:department_id]
+  		@event = Event.new(
+			title: params[:title],
+			description: params[:description],
+			duration: params[:duration],
+			location: params[:location],
+			start_date: params[:start_date])
+		if @event.save
+			flash[:success] = 'Successfully create event !'
+			redirect_to "/"
+		else
+			flash[:warning] = 'Oups'
+			redirect_to "/"
+		end
  	end
 
   	def update
