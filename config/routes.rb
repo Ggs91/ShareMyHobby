@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :event
   resources :user
 
-  get 'contact', to: 'welcome#contact'
-  get 'about', to: 'welcome#about'
+  get 'contact', to: 'static_pages#contact'
+  get 'about', to: 'static_pages#about'
 	
 end
