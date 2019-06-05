@@ -16,9 +16,9 @@ class EventController < ApplicationController
   	end
 
   	def create
-		#@event.category_id = params[:category_id] 
-		#@event.administrator_id = params[:administrator_id] 
-		#@event.department_id = params[:department_id]
+		#@event.category_id = params[:category_id] liste déroulante
+		#@event.administrator_id = params[:administrator_id] = current user 
+		#@event.department_id = params[:department_id]  liste déroulante
   		@event = Event.new(
 			title: params[:title],
 			description: params[:description],
