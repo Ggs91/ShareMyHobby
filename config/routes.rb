@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
+  root 'event#index'
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :event
+  resources :user
 
-	root 'welcome#index'
-	get '/show', to: 'welcome#show'
+  get 'contact', to: 'static_pages#contact'
+  get 'about', to: 'static_pages#about'
 	
 end
