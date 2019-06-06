@@ -1,8 +1,8 @@
-class EventController < ApplicationController
+class EventsController < ApplicationController
 
 	def index
    		@event = Event.all
-   	end 
+   	end
 
   	def show
 		@event = Event.find(params[:id])
@@ -48,10 +48,7 @@ class EventController < ApplicationController
   	end
 
 
-	private 
+	private
 
 
 end
-
-
-
