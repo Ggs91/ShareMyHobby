@@ -1,0 +1,48 @@
+       <header class="site-navbar container py-0 bg-white" role="banner">
+
+      <!-- <div class="container"> -->
+        <div class="row align-items-center">
+          
+          <div class="col-6 col-xl-2">
+            <h1 class="mb-0 site-logo"><a href="/event/index.html.erb" class="text-black mb-0">Share<span class="text-primary">MyHobby</span>  </a></h1>
+          </div>
+          <div class="col-12 col-md-10 d-none d-xl-block">
+            <nav class="site-navigation position-relative text-right" role="navigation">
+
+              <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+               <li><%= link_to "Home", root_path %></li>
+               <li><%= link_to "About", about_path %></li>
+               <li><%= link_to "Contact", contact_path %> </li>
+
+                <li class="ml-xl-3 login"><span class="border-left pl-xl-4"></span>               
+                
+                <% if user_signed_in? %>
+                <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+                
+                <% else %>
+                
+                <li><%= link_to('Login', new_user_session_path) %></li>
+                <% end %>
+                
+                <% if user_signed_in? %>
+                <li><%= link_to('Edit registration', edit_user_registration_path) %></li>
+                
+                <% else %>
+                  
+                <li><%= link_to('Register', new_user_registration_path) %></li>
+                <% end %>
+
+                <li><a href="#" class="cta"><span class="bg-primary text-white rounded">+ Post an Ad</span></a></li>
+              </ul>
+            </nav>
+          </div>
+
+
+          <div class="d-inline-block d-xl-none ml-auto py-3 col-6 text-right" style="position: relative; top: 3px;">
+            <a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a>
+          </div>
+
+        </div>
+      <!-- </div> -->
+      
+    </header>
