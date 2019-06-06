@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+  <head> 
+    
     <title>ShareMyHobby</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -32,10 +33,11 @@
   </head>
 
   <body>
-  <%= render "layouts/header" %>
-    <%= yield %>
-  <%= render "layouts/footer" %>
-  <%= render "layouts/scripts" %>
+  <%= render "components/modal/header" %>
+  <%= render "components/search_top" %>
+  <%= yield %>
+  <%= render "components/modal/footer" %>
+  <%= render "components/scripts" %>
   </body>
   </div>
  
