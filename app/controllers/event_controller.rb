@@ -17,7 +17,6 @@ class EventController < ApplicationController
 
   	def create
 		#@event.category_id = params[:category_id] liste déroulante
-		#@event.administrator_id = params[:administrator_id] = current user 
 		#@event.department_id = params[:department_id]  liste déroulante
   		@event = Event.new(
 			title: params[:title],
@@ -25,6 +24,7 @@ class EventController < ApplicationController
 			duration: params[:duration],
 			location: params[:location],
 			start_date: params[:start_date])
+      @event.administrator_id = current_user
 		if @event.save
 			flash[:success] = 'Successfully create event !'
 			redirect_to "/"
