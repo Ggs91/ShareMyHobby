@@ -50,8 +50,12 @@
                 <%= department_form.select :name, options_from_collection_for_select(Department.all, :id, :name), class: "form-control" %>
                 <% end %>
               </div>
-            
 
+              <div class="form-group">
+                <%= f.label :profil_picture, class: "h4" %><br>
+                <%= f.file_field :profil_picture %>
+              </div>
+            
                <div class="form-group">
                 <%= f.submit "Sign Up", class: "booking-confirm hvr-shutter-out-horizontal" %>
               </div>
