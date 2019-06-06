@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :department
-  accepts_nested_attributes_for :department
   has_many :administrated_events, foreign_key: 'administrator_id', class_name: "Event", dependent: :destroy
   has_many :participations, dependent: :destroy
   has_many :attended_events, through: :participations, source: :event, dependent: :destroy
