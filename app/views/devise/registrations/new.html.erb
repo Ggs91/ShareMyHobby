@@ -40,8 +40,8 @@
           </div>
 
           <div class="form-group">
-            <%= f.label :age, class: "h4" %> :<br />
-            <%= f.text_field :age, class: "form-control" %>
+            <%= f.label :date_of_birth, class: "h4" %> :<br />
+            <%= f.date_field :date_of_birth, min: Date.new(1930, 01, 01), max: Date.today, class: 'form-control' %>
           </div>
 
           <div class="form-group">
