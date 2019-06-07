@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :events, except: [:index]
 
   devise_for :users do
-    resources :profil_pictures, only: [:create]
+    resources :profile_pictures, only: [:create]
   end
 
   get 'contact', to: 'static_pages#contact'
