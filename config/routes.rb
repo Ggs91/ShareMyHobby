@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   root 'events#index'
-  resources :events, except: [:index]
+  resources :events, except: [:index] do
+    resources :comments, only: [:create]
+  end
 
   devise_for :users do
     resources :profile_pictures, only: [:create]
