@@ -21,11 +21,15 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  def age  #calculate a user age based on it's date_ob_birth attribute.
+    self.date_of_birth.nil? ? "N/A" : ((Time.zone.now - self.date_of_birth.to_time) / 1.year.seconds).floor
+  end
+
 private
 
   def default_values   # set default values for user's attributes that hasn't been submitted
     self.phone_number = "N/A" if self.phone_number.blank?
-    self.age = "N/A" if self.age.blank?
     self.description = "No description available" if self.description.blank?
   end
+
 end
