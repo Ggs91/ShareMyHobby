@@ -4,9 +4,11 @@ class EventsController < ApplicationController
 		@events = Event.all
 	end
 
-	def show
-		@event = Event.find(params[:id])
-	end
+  	def show
+			@event = Event.find(params[:id])
+			@comment = Comment.new
+			@comments = @event.comments.order("created_at DESC") #comments will appear on descending order (the last comment will be the first etc..)
+  	end
 
 	def new
 		@event = Event.new
