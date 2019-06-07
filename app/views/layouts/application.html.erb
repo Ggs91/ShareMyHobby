@@ -1,42 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-
     <title>ShareMyHobby</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800" rel="stylesheet">
     <link rel="stylesheet" href="/assets/fonts/icomoon/style.css">
-
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/css/magnific-popup.css">
     <link rel="stylesheet" href="/assets/css/jquery-ui.css">
     <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
-
     <link rel="stylesheet" href="/assets/css/bootstrap-datepicker.css">
-
     <link rel="stylesheet" href="/assets/fonts/flaticon/font/flaticon.css">
-
     <link rel="stylesheet" href="/assets/css/aos.css">
     <link rel="stylesheet" href="/assets/css/rangeslider.css">
-
     <link rel="stylesheet" href="/assets/css/style.css">
-
   </head>
 
   <body>
-  <%= render "components/modal/header" %>
-  <%= render "components/search_top" %>
-  <%= yield %>
-  <%= render "components/modal/footer" %>
-  <%= render "components/scripts" %>
+    <%= render "components/modal/header" %>
+    <%= render "components/search_top" %>
+    <%= yield %>
+    <%= render "components/modal/footer" %>
+    <%= render "components/scripts" %>
   </body>
-  </div>
+ </html>
