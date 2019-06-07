@@ -27,7 +27,7 @@ puts "#{Department.all.count} departments created"
 
 ### Category seed ###
 
-categories = ["Sport", "Art", "Music", "Cooking", "Science", "Animals"]
+categories = ["Sport", "Art", "Music", "Cooking", "Science", "Animals","Programmation", "Photography", "Video Making & Editing"]
 categories.each do |category|
   Category.create!(
     name: category
@@ -45,15 +45,17 @@ d = Department.all.sample(4)
 	user = User.create!(
 		first_name: first_name,
 		last_name: last_name,
-    age: Faker::Number.between(15, 50),
+    date_of_birth: Faker::Date.between(Date.new(1930, 01, 01), Date.today),
 		email: first_name + last_name + "@yopmail.com",
 		password: "azerty",
+    phone_number: "06.23.45.67.89",
     description: Faker::Lorem.paragraph(2, false, 4),
     department: d.sample
 	)
 end
 puts "#{User.all.count} users created"
 
+### Event seed ###
 10.times do |i|
   e = Event.create!(
     title: "Event #{i+1}",
