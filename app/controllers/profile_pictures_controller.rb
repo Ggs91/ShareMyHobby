@@ -1,7 +1,7 @@
 class ProfilePicturesController < ApplicationController
   def create
     @user = User.find(params[:user_id])
-    @user.profil_picture.attach(params[:profil_picture])
+    @user.profile_picture.attach(params[:profile_picture])
     redirect_to(user_path(@user))
   end
 end
