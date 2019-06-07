@@ -45,7 +45,7 @@ d = Department.all.sample(4)
 	user = User.create!(
 		first_name: first_name,
 		last_name: last_name,
-    age: Faker::Number.between(15, 50),
+    date_of_birth: Faker::Date.between(Date.new(1930, 01, 01), Date.today),
 		email: first_name + last_name + "@yopmail.com",
 		password: "azerty",
     phone_number: "06.23.45.67.89",
@@ -55,7 +55,7 @@ d = Department.all.sample(4)
 end
 puts "#{User.all.count} users created"
 
-### Event seed ### 
+### Event seed ###
 10.times do |i|
   e = Event.create!(
     title: "Event #{i+1}",
