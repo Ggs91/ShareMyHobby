@@ -10,23 +10,14 @@ class EventsController < ApplicationController
 		@event = Event.new
 	end
 
-	def create
-		#@event.category_id = params[:category_id] liste déroulante
-		#@event.department_id = params[:department_id]  liste déroulante
-		@event = Event.new(
-			title: params[:title],
-			description: params[:description],
-			duration: params[:duration],
-			location: params[:location],
-			start_date: params[:start_date]
-		)
-		@event.administrator_id = current_user
+	def create                          #adds start_date attribute to the events params and associating the current user to the event being created
+		@event = Event.new(event_params.merge(start_date: start_date_and_time, administrator: current_user))
 		if @event.save
-		flash[:success] = 'Successfully create event !'
-		redirect_to "/"
+			flash[:success] = 'Event Successfully Created !'
+			redirect_to root_path
 		else
-		flash[:warning] = 'Oups'
-		redirect_to "/"
+			flash[:warning] = 'Oups, your event has not been created'
+			render :new
 		end
 	end
 
@@ -60,7 +51,13 @@ private
   end
 
   def event_params
-    params.require(:event).permit( :title,  :description, :start_date, :duration, :location, :category, :department)
+    params.require(:event).permit(:title, :description, :duration, :location, :category_id, :department_id, :max_participants)
+	end
+
+	def start_date_and_time #construction of full event's starting time (date + time) by parsing them through DateTime()
+		date = params.require(:event).permit(:start_date)    #after getting each one separatly through the form
+		time = params.permit(:time)
+		DateTime.parse("#{date} #{time}")
 	end
 
 end
