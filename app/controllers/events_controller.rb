@@ -1,51 +1,53 @@
 class EventsController < ApplicationController
 
 	def index
-   		@event = Event.all
-   	end
+		@events = Event.all
+	end
 
   	def show
-		@event = Event.find(params[:id])
+			@event = Event.find(params[:id])
+			@comment = Comment.new
+			@comments = @event.comments.order("created_at DESC") #comments will appear on descending order (the last comment will be the first etc..)
   	end
 
-  	def new
-    	@event = Event.new
-  	end
+	def new
+		@event = Event.new
+	end
 
-  	def edit
-  	end
+	def edit
+	end
 
-  	def create
+	def create
 		#@event.category_id = params[:category_id] liste déroulante
 		#@event.department_id = params[:department_id]  liste déroulante
-  		@event = Event.new(
-			title: params[:title],
-			description: params[:description],
-			duration: params[:duration],
-			location: params[:location],
-			start_date: params[:start_date])
-      @event.administrator_id = current_user
+		@event = Event.new(
+		title: params[:title],
+		description: params[:description],
+		duration: params[:duration],
+		location: params[:location],
+		start_date: params[:start_date])
+		@event.administrator_id = current_user
 		if @event.save
-			flash[:success] = 'Successfully create event !'
-			redirect_to "/"
+		flash[:success] = 'Successfully create event !'
+		redirect_to "/"
 		else
-			flash[:warning] = 'Oups'
-			redirect_to "/"
+		flash[:warning] = 'Oups'
+		redirect_to "/"
 		end
- 	end
+	end
 
-  	def update
-    unless current_user == @event.administrator_id
-    redirect_back fallback_location: root_path, notice: 'User is not owner'
-  	end
-   	@event.update(event_params)
-    redirect_to events_path(@event.id)
-  	end
+	def update
+		unless current_user == @event.administrator_id
+		redirect_back fallback_location: root_path, notice: 'User is not owner'
+		end
+		@event.update(event_params)
+		redirect_to events_path(@event.id)
+	end
 
-  	def destroy
-   	 	@event.destroy
-   	 	redirect_to event_path
-  	end
+	def destroy
+		@event.destroy
+		redirect_to event_path
+	end
 
 
 	private
