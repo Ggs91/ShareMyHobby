@@ -16,7 +16,7 @@ Category.reset_pk_sequence
 User.reset_pk_sequence
 Event.reset_pk_sequence
 
-### Department seed ##
+### Department seed (from csv scrapped file in lib/seeds)###
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'departments_names.csv'))
 csv = CSV.parse(csv_text, :encoding => 'ISO-8859-1')
 
