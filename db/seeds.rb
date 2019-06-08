@@ -65,7 +65,8 @@ puts "#{User.all.count} users created"
     start_date: DateTime.new(2019,07,rand(15..30)),
     duration: rand(4..12)*5,
     administrator: User.all.sample,
-    category: Category.all.sample
+    category: Category.all.sample,
+    max_participants: 10
   )
   e.participants.concat(User.all.sample(4))
 end
