@@ -9,12 +9,12 @@
 
           <div class="form-group required">
             <%= f.label :email, class: "control-label font-weight-bold" %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email Required" %>
           </div>
 
           <div class="form-group required">
             <%= f.label :password, class: "control-label font-weight-bold" %><br />
-            <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Password Required" %>
           </div>
 
           <% if devise_mapping.rememberable? %>
