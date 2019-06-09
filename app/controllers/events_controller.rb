@@ -54,10 +54,10 @@ private
     params.require(:event).permit(:title, :description, :duration, :location, :category_id, :department_id, :max_participants)
 	end
 
-	def start_date_and_time #construction of full event's starting time (date + time) by parsing them through DateTime()
-		date = params.require(:event).permit(:start_date)    #after getting each one separatly through the form
-		time = params.permit(:time)
-		DateTime.parse("#{date} #{time}")
+	def start_date_and_time
+		date = params.require(:event).permit(:start_date)
+		time = params.permit(:time)							#construction of full event's starting time (date + time) by parsing them through DateTime()
+		DateTime.parse("#{date} #{time}")       #after getting each one separatly through the form
 	end
 
 end
