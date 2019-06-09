@@ -1,43 +1,61 @@
 <div class="site-section bg-light">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-7 mb-5"  data-aos="fade">
-            <%= form_tag url_for(action: 'create'), method: "post" do %>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-7 mb-5" data-aos="fade">
 
-            <form action="#" class="p-5 bg-white">
-             
-                  <div class="form-group">
-                  <%= label_tag 'Title' %>
-                  <%= text_field_tag 'title', @event.title, class: "form-control" %>
-                  </div>
-                  <br /> <br />
-                  <div class="form-group">
-                  <%= label_tag 'Description' %>
-                  <%= text_field_tag 'description', @event.description, class: "form-control"  %>
-                  </div>
-                  <br /> <br />
-                  <div class="form-group">
-                  <%= label_tag 'Location' %>
-                  <%= text_field_tag 'location', @event.location, class: "form-control" %>
-                  </div>
-                  <br /> <br />
-                  <div class="form-group">
-                  <%= label_tag 'Start_Date' %>
-                  <%= text_field_tag 'start_date', @event.start_date, class: "form-control"  %>
-                  </div>
-                  <br /> <br />
-                  <div class="form-group">
-                  <%= label_tag 'Duration' %>
-                  <%= text_field_tag 'duration', @event.duration, class: "form-control" %>
-                   </div>
-                  <br /> <br />
-            
+        <h2>Create Your Event !</h2>
+        <h3>Share Your Hobby & Meet new Feelows that Share the same Passion !</h2><br />
 
-           <%= submit_tag "Create Post" %>
+        <%= form_for @event do |f| %>
 
-            <% end %>
-            </div>
+        <div class="form-group">
+          <%= f.label :category_id, class: "h4" %><br />
+          <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name,  prompt: true),include_blank: "Choose a category", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :title, class: "h4" %> :</br>
+          <%= f.text_field :title, placeholder: "Ex: Come watch me perform at comedy bar this saturday !", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :description, class: "h4" %> :</br>
+          <%= f.text_area :description, placeholder: "In few words:\n-Introduce your hobby and what you love about it\n-Describe your event proposition (live demo, workshop...)\n-Place (your place, café, park, showplace..)\n-Notes for your hosts (invit them to bring they own instrument...", rows: "5", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :max_participants, "Max hosts", class: "h4" %><br>
+          <%= f.number_field :max_participants, in: 1..10000, step: 1, placeholder: 'Maximum places available', class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :start_date, 'Date', class: "h4" %><br>
+          <%= f.date_field :start_date, min: Date.today, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <label for="time-input" class="h4">Starting time</label>
+          <input type="time" name="time" id="time-input" class ="form-control">
+        </div>
+
+        <div class="form-group">
+          <%= f.label :duration, "Event duration time (minutes)", class: "h4" %><br>
+          <%= f.number_field :duration, in: 5..1000, step: 5, placeholder: "Duration time", class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :location, "Event Location", class: "h4" %><br>
+          <%= f.text_field :location, placeholder: "Street, city", class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :department_id, class: "h4" %><br />
+          <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :name,  prompt: true),include_blank: "Choose a department", class: "form-control" %>
+        </div><br />
+
+        <%= f.submit "Share My Hobby !", class: "btn btn-primary rounded" %>
+        <% end %>
       </div>
+    </div>
+  </div>
 </div>
-
-
