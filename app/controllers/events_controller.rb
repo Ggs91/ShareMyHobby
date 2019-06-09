@@ -11,13 +11,15 @@ class EventsController < ApplicationController
 		@event = Event.new
 	end
 
-	def create                          #adds start_date attribute to the events params and associate the current user to the event being created
-		@event = Event.new(event_params.merge(start_date: start_date_and_time, administrator: current_user))
+	def create
+		puts "oooooooooooooooooooooooooooooooooooo"
+		puts params  #adds start_date attribute to the events params and associate the current user to the event being created
+		@event = Event.new(event_params.merge(start_date: parsed_date_and_time, administrator: current_user))
 		if @event.save
 			flash[:success] = "Event Successfully Created !"
 			redirect_to @event
 		else
-			flash[:danger] = "Oups, your event hasn't been created"
+			flash[:danger] = "Your event hasn't been created"
 			render :new
 		end
 	end
@@ -34,13 +36,13 @@ class EventsController < ApplicationController
 
 	def update
 		@event = set_event
-		if @event.update(event_params.merge(start_date: start_date_and_time))
-				flash[:success] = "Your modifications have been saved successfully"
-				redirect_to @event
-			else
-				flash[:error] = "Your modifications haven't been saved"
-				render :edit
-			end
+		if @event.update(event_params.merge(start_date: parsed_date_and_time))
+			flash[:success] = "Your modifications have been saved successfully"
+			redirect_to @event
+		else
+			flash[:error] = "Your modifications haven't been saved"
+			render :edit
+		end
 	end
 
 	def destroy
@@ -63,10 +65,12 @@ private
     params.require(:event).permit(:title, :description, :duration, :location, :category_id, :department_id, :max_participants)
 	end
 
-	def start_date_and_time
+	def parsed_date_and_time
 		date = params.require(:event).permit(:start_date)
-		time = params.permit(:time)							#construction of full event's starting time (date + time) by parsing them through DateTime()
-		DateTime.parse("#{date} #{time}")       #after getting each one separatly through the form
+		time = params.permit(:time)
+	#	begin
+	  	DateTime.parse("#{date} #{time}")
+	#	rescue ArgumentError => e
+	#	end
 	end
-
 end
