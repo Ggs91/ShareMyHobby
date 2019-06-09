@@ -33,7 +33,4 @@ private
     self.description = "No description available" if self.description.blank?
   end
 
-  def username #We spilt the email adress at the @ sign and use the 1st word as a username
-    return email.split("@")[0].capitalize
-  end
 end
