@@ -1,4 +1,7 @@
 class Participation < ApplicationRecord
+  validates_with MaximumParticipationsValidator
+  validates_with UniqueParticipationValidator
   belongs_to :user
   belongs_to :event
 end
+#Make sure that the number of participants will not be higher that max_participations

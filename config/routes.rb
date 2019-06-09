@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
-  get 'profilpictures/create'
-  root 'event#index'
-  devise_for :users do
-    resources :profilpictures, only: [:create]
+  root 'events#index'
+  resources :events, except: [:index] do
+    resources :comments, only: [:create]
   end
-  resources :event
-  resources :user
+
+  devise_for :users do
+    resources :profile_pictures, only: [:create]
+  end
 
   get 'contact', to: 'static_pages#contact'
   get 'about', to: 'static_pages#about'
-
 end
