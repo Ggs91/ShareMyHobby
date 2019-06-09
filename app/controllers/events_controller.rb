@@ -4,20 +4,20 @@ class EventsController < ApplicationController
 	before_action :restrict_access_to_current_user, only: [:edit, :update, :destroy]
 
 	def index
-		@events = Event.all.order('start_date') # sart_date: :desc ??
+		@events = Event.all.order("created_at DESC")
 	end
 
 	def new
 		@event = Event.new
 	end
 
-	def create                          #adds start_date attribute to the events params and associate the current user to the event being created
-		@event = Event.new(event_params.merge(start_date: start_date_and_time, administrator: current_user))
+	def create        #adds start_date attribute to the events params and associate the current user to the event being created
+		@event = Event.new(event_params.merge(start_date: parsed_date_and_time, administrator: current_user))
 		if @event.save
 			flash[:success] = "Event Successfully Created !"
 			redirect_to @event
 		else
-			flash[:danger] = "Oups, your event hasn't been created"
+			flash[:danger] = "Your event hasn't been created"
 			render :new
 		end
 	end
@@ -34,20 +34,19 @@ class EventsController < ApplicationController
 
 	def update
 		@event = set_event
-		if @event.update(event_params.merge(start_date: start_date_and_time))
-				flash[:success] = "Your modifications have been saved successfully"
-				redirect_to @event
-			else
-				flash[:error] = "Your modifications haven't been saved"
-				render :edit
-			end
+		if @event.update(event_params.merge(start_date: parsed_date_and_time))
+			flash[:success] = "Your modifications have been saved successfully"
+			redirect_to @event
+		else
+			flash[:error] = "Your modifications haven't been saved"
+			render :edit
+		end
 	end
 
 	def destroy
-		@event.destroy
-		redirect_to event_path
+		set_event.destroy
+		redirect_to root_path
 	end
-
 
 private
 
@@ -63,10 +62,9 @@ private
     params.require(:event).permit(:title, :description, :duration, :location, :category_id, :department_id, :max_participants)
 	end
 
-	def start_date_and_time
-		date = params.require(:event).permit(:start_date)
-		time = params.permit(:time)							#construction of full event's starting time (date + time) by parsing them through DateTime()
-		DateTime.parse("#{date} #{time}")       #after getting each one separatly through the form
+	def parsed_date_and_time
+		date = params.require(:event).permit(:start_date)  #construction of full event's starting time (date + time) by parsing them through DateTime()
+	  time = params.permit(:time) 	                     #after getting each one separatly through the form
+		return DateTime.parse("#{date} #{time}")
 	end
-
 end
