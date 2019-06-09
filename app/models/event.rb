@@ -9,7 +9,6 @@ class Event < ApplicationRecord
   #Validations
   validate :start_date_cannot_be_in_the_past
   validate :positif_multiple_of_5
-  validate :date_time_format
   validates :duration, numericality: { only_integer: true }
   validates :title, presence: true, length: { in: 5..140 }
   validates :description, presence: true, length: { in: 5..1000 }
@@ -36,9 +35,5 @@ private
 
   def positif_multiple_of_5
     errors.add(:duration, "must be a multiple of 5") unless duration.present? && duration > 0 && duration % 5 == 0
-  end
-
-  def date_time_format
-    errors.add(:date_time, 'must be a valid. Choose a date and a time') if ((DateTime.parse(date_time) rescue ArgumentError) == ArgumentError)
   end
 end
