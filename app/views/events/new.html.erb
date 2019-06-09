@@ -3,7 +3,6 @@
     <div class="row justify-content-center">
       <div class="col-md-7 mb-5" data-aos="fade">
 
-
         <% if @event.errors.any? %>
           <div class="alert alert-warning" role="alert">
             <p>Votre événement n'a pas pu être créer pour la (ou les) raison(s) suivante(s) :</p>
@@ -15,33 +14,18 @@
           </div>
         <% end %>
 
-
-
-
         <h2>Create Your Event !</h2>
         <h2>Share Your Hobby & Meet new Feelows that Share the same Passion !</h2><br />
 
         <%= form_for @event do |f| %>
 
-                      <div class="form-group">
-                        <%= f.label :category_id, class: "h4" %><br />
-
-                          <div class="select-wrap">
-
-                              <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
-
-                              <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name,  prompt: true),{include_blank: "Choose a category"}, { :class => 'form-control' } %>
-
-                            </div>
-                            </div>
-
-                            <%= f.label :category_id, class: "h4" %><br />
-                            <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name,  prompt: true),{include_blank: "Choose a category"}, { :class => 'form-control' } %>
-
-
-
-
-
+        <div class="form-group">
+          <%= f.label :category_id, class: "h4" %><br />
+          <div class="select-wrap">
+            <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
+            <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name,  prompt: true),{ include_blank: "Choose a category" }, { :class => 'form-control' } %>
+          </div>
+        </div>
 
         <div class="form-group">
           <%= f.label :title, class: "h4" %> :</br>
@@ -66,19 +50,8 @@
         <!-- tag_fields for retrieving time input, because no "time" attribute for a form_for to infer. "Time" attribute will be parsed with "date" in events controller -->
         <div class="form-group">
           <%= label_tag 'time', 'Starting time', class: "h4" %>
-          <%= time_field_tag 'time', nil, class: 'form-control' %>
+          <%= time_field_tag 'time', "N/A", class: 'form-control' %>
         </div>
-
-
-
-
-        <div class="form-group">
-          <%= f.label :start_date, "Date de début" %>
-          <%= f.datetime_select :start_date, {},{:id => "datepicker"} %>
-        </div>
-
-
-
 
         <div class="form-group">
           <%= f.label :duration, "Event duration time (minutes)", class: "h4" %><br>
@@ -92,7 +65,10 @@
 
         <div class="form-group">
           <%= f.label :department_id, class: "h4" %><br />
-          <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :name,  prompt: true),include_blank: "Choose a department", class: "form-control" %>
+          <div class="select-wrap">
+            <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
+            <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :name,  prompt: true), { include_blank: "Choose a category" }, { :class => 'form-control' } %>
+          </div>
         </div><br />
 
         <%= f.submit "Share My Hobby !", class: "btn btn-primary rounded" %>
@@ -101,29 +77,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-<h1>Datetimepicker</h1>
-<%= simple_form_for @event do |f| %>
-<div class="container">
- <div class="row">
-  <div class='col-sm-6 col-sm-offset-3'>
-   <div class="form-group">
-    <div class='input-group date' id='datetimepicker'>
-    <%= f.input :start_date, label: false, placeholder: "Sélectionnez la date et l'heure", class: "form-control" %>
-     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-     </div>
-    </div>
-   <div class="form-group">
-   <%= f.submit "C'est parti", class: "btn btn-primary" %>
-   </div>
-  </div>
- </div>
-</div>
-<% end %>
