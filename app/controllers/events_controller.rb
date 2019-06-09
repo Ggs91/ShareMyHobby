@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
-	before_action :authenticate_user!, only: [:new, :create]
+	before_action :authenticate_user!, except: [:index, :show]
 	before_action :set_event, only: [:show, :edit, :update, :destroy]
+	before_action :restrict_access_to_current_user, only: [:edit, :update, :destroy]
 
 	def index
 		@events = Event.all.order('start_date') # sart_date: :desc ??
@@ -10,13 +11,13 @@ class EventsController < ApplicationController
 		@event = Event.new
 	end
 
-	def create                          #adds start_date attribute to the events params and associating the current user to the event being created
+	def create                          #adds start_date attribute to the events params and associate the current user to the event being created
 		@event = Event.new(event_params.merge(start_date: start_date_and_time, administrator: current_user))
 		if @event.save
 			flash[:success] = "Event Successfully Created !"
 			redirect_to @event
 		else
-			flash[:warning] = "Oups, your event hasn't been created"
+			flash[:danger] = "Oups, your event hasn't been created"
 			render :new
 		end
 	end
@@ -28,14 +29,18 @@ class EventsController < ApplicationController
 	end
 
 	def edit
+		@event = set_event
 	end
 
 	def update
-		unless current_user == @event.administrator_id
-		redirect_back fallback_location: root_path, notice: 'User is not owner'
-		end
-		@event.update(event_params)
-		redirect_to events_path(@event.id)
+		@event = set_event
+		if @event.update(event_params.merge(start_date: start_date_and_time))
+				flash[:success] = "Your modifications have been saved successfully"
+				redirect_to @event
+			else
+				flash[:error] = "Your modifications haven't been saved"
+				render :edit
+			end
 	end
 
 	def destroy
@@ -49,6 +54,10 @@ private
   def set_event
     @event = Event.find(params[:id])
   end
+
+	def restrict_access_to_current_user  #check if the event subject of the action (thanks to its id in params) is owned by the current user, redirect to root_path otherwise
+		redirect_to root_path, notice: "Action can't be perform, you are not the owner" unless current_user.id == set_event.administrator.id
+	end
 
   def event_params
     params.require(:event).permit(:title, :description, :duration, :location, :category_id, :department_id, :max_participants)

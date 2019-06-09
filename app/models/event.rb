@@ -24,6 +24,10 @@ class Event < ApplicationRecord
     self.number_of_places_available > self.participants.count
   end
 
+  def end_date
+    self.start_date + self.duration.minutes
+  end
+
 private
 
   def start_date_cannot_be_in_the_past
