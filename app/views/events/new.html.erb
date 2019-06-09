@@ -16,15 +16,32 @@
         <% end %>
 
 
+
+
         <h2>Create Your Event !</h2>
         <h2>Share Your Hobby & Meet new Feelows that Share the same Passion !</h2><br />
 
         <%= form_for @event do |f| %>
 
-        <div class="form-group">
-          <%= f.label :category_id, class: "h4" %><br />
-          <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name,  prompt: true),include_blank: "Choose a category", class: "form-control" %>
-        </div>
+                      <div class="form-group">
+                        <%= f.label :category_id, class: "h4" %><br />
+
+                          <div class="select-wrap">
+
+                              <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
+
+                              <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name,  prompt: true),{include_blank: "Choose a category"}, { :class => 'form-control' } %>
+
+                            </div>
+                            </div>
+
+                            <%= f.label :category_id, class: "h4" %><br />
+                            <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name,  prompt: true),{include_blank: "Choose a category"}, { :class => 'form-control' } %>
+
+
+
+
+
 
         <div class="form-group">
           <%= f.label :title, class: "h4" %> :</br>
@@ -57,7 +74,7 @@
 
         <div class="form-group">
           <%= f.label :start_date, "Date de début" %>
-          <%= f.datetime_select :start_date, :html=>{:class => "form-control, form-control-sm"} %>
+          <%= f.datetime_select :start_date, {},{:id => "datepicker"} %>
         </div>
 
 
@@ -84,3 +101,29 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+<h1>Datetimepicker</h1>
+<%= simple_form_for @event do |f| %>
+<div class="container">
+ <div class="row">
+  <div class='col-sm-6 col-sm-offset-3'>
+   <div class="form-group">
+    <div class='input-group date' id='datetimepicker'>
+    <%= f.input :start_date, label: false, placeholder: "Sélectionnez la date et l'heure", class: "form-control" %>
+     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+     </div>
+    </div>
+   <div class="form-group">
+   <%= f.submit "C'est parti", class: "btn btn-primary" %>
+   </div>
+  </div>
+ </div>
+</div>
+<% end %>
