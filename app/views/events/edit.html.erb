@@ -9,7 +9,10 @@
 
         <div class="form-group">
           <%= f.label :category_id, class: "h4" %><br />
-          <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name,  prompt: true, selected: @event.category.id),include_blank: "Choose a category", class: "form-control" %>
+          <div class="select-wrap">
+            <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
+            <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name,  prompt: true, selected: @event.category.id),{ include_blank: "Choose a category" }, { :class => 'form-control' } %>
+          </div>
         </div>
 
         <div class="form-group">
@@ -31,6 +34,7 @@
           <%= f.label :start_date, 'Date', class: "h4" %><br>
           <%= f.date_field :start_date, min: Date.today, class: 'form-control' %>
         </div>
+
         <!-- tag_fields for retrieving time input, because no "time" attribute for a form_for to infer. "Time" attribute will be parsed with "date" in events controller -->
         <div class="form-group">
           <%= label_tag 'time', 'Starting time', class: "h4" %>
@@ -49,7 +53,10 @@
 
         <div class="form-group">
           <%= f.label :department_id, class: "h4" %><br />
-          <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :name,  prompt: true, selected: @event.department.id),include_blank: "Choose a department", class: "form-control" %>
+          <div class="select-wrap">
+            <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
+            <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :name,  prompt: true, selected: @event.department.id), { include_blank: "Choose a category" }, { :class => 'form-control' } %>
+          </div>
         </div><br />
 
         <%= f.submit "Update Event", class: "btn btn-primary rounded" %>
