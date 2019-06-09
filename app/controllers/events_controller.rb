@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 	before_action :set_event, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@events = Event.all.order("start_date") # sart_date: :desc ??
+		@events = Event.all.order('start_date') # sart_date: :desc ??
 	end
 
 	def new
@@ -13,10 +13,10 @@ class EventsController < ApplicationController
 	def create                          #adds start_date attribute to the events params and associating the current user to the event being created
 		@event = Event.new(event_params.merge(start_date: start_date_and_time, administrator: current_user))
 		if @event.save
-			flash[:success] = 'Event Successfully Created !'
-			redirect_to root_path
+			flash[:success] = "Event Successfully Created !"
+			redirect_to @event
 		else
-			flash[:warning] = 'Oups, your event has not been created'
+			flash[:warning] = "Oups, your event hasn't been created"
 			render :new
 		end
 	end
