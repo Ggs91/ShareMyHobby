@@ -4,16 +4,14 @@ class EventsController < ApplicationController
 	before_action :restrict_access_to_current_user, only: [:edit, :update, :destroy]
 
 	def index
-		@events = Event.all.order('start_date') # sart_date: :desc ??
+		@events = Event.all.order("created_at DESC")
 	end
 
 	def new
 		@event = Event.new
 	end
 
-	def create
-		puts "oooooooooooooooooooooooooooooooooooo"
-		puts params  #adds start_date attribute to the events params and associate the current user to the event being created
+	def create        #adds start_date attribute to the events params and associate the current user to the event being created
 		@event = Event.new(event_params.merge(start_date: parsed_date_and_time, administrator: current_user))
 		if @event.save
 			flash[:success] = "Event Successfully Created !"
@@ -46,10 +44,9 @@ class EventsController < ApplicationController
 	end
 
 	def destroy
-		@event.destroy
-		redirect_to event_path
+		set_event.destroy
+		redirect_to root_path
 	end
-
 
 private
 
@@ -66,11 +63,8 @@ private
 	end
 
 	def parsed_date_and_time
-		date = params.require(:event).permit(:start_date)
-		time = params.permit(:time)
-	#	begin
-	  	DateTime.parse("#{date} #{time}")
-	#	rescue ArgumentError => e
-	#	end
+		date = params.require(:event).permit(:start_date)  #construction of full event's starting time (date + time) by parsing them through DateTime()
+	  time = params.permit(:time) 	                     #after getting each one separatly through the form
+		return DateTime.parse("#{date} #{time}")
 	end
 end
