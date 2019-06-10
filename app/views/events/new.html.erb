@@ -67,7 +67,7 @@
           <%= f.label :department_id, class: "h4" %><br />
           <div class="select-wrap">
             <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
-            <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :name,  prompt: true), { include_blank: "Choose a category" }, { :class => 'form-control' } %>
+            <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :name,  prompt: true), { include_blank: "Choose a department" }, { :class => 'form-control' } %>
           </div>
         </div><br />
 
