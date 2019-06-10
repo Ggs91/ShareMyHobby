@@ -3,13 +3,11 @@
     <div class="row justify-content-center">
       <div class="col-md-7 mb-5" data-aos="fade">
 
-    <h1 class="text-center">Sign Up</h1><br>
+        <h1 class="text-center">Sign Up</h1><br>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>
         <%=render "components/alert" %>
-
-        <form action="#" class="p-5 bg-white">
 
         <div class="form-row">
           <div class="form-group col-md-6 required">
@@ -23,22 +21,23 @@
           </div>
         </div>
 
-          <div class="form-group required">
-            <%= f.label :email, class: "control-label font-weight-bold" %></br>
-            <%= f.email_field :email, placeholder: "Enter Email", autofocus: true, autocomplete: "email", class: "form-control" %>
-          </div>
+        <div class="form-group required">
+          <%= f.label :email, class: "control-label font-weight-bold" %></br>
+          <%= f.email_field :email, placeholder: "Enter Email", autofocus: true, autocomplete: "email", class: "form-control" %>
+        </div>
 
-          <div class="form-group required">
-            <%= f.label :password, class: "control-label font-weight-bold" %> <% if @minimum_password_length %>(<%= @minimum_password_length %> characters minimum)<br />
-            <% end %>
-            <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password Required" %>
-          </div>
+        <div class="form-group required">
+          <%= f.label :password, class: "control-label font-weight-bold" %> <% if @minimum_password_length %>(<%= @minimum_password_length %> characters minimum)<br />
+          <% end %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password Required" %>
+        </div>
 
-          <div class="form-group required">
-            <%= f.label :password_confirmation, class: "control-label font-weight-bold" %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Password Confirmation Required" %>
-          </div>
-          <div class="form-row">
+        <div class="form-group required">
+          <%= f.label :password_confirmation, class: "control-label font-weight-bold" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Password Confirmation Required" %>
+        </div>
+
+        <div class="form-row">
           <div class="form-group col-md-6">
             <%= f.label :phone_number, class: "control-label font-weight-bold" %><br />
             <%= f.text_field :phone_number, placeholder: "01.23.45.67.89", class: "form-control" %>
@@ -50,38 +49,33 @@
           </div>
         </div>
 
-          <div class="form-group">
-            <%= f.label :description, class: "control-label font-weight-bold" %><br />
-            <%= f.text_area :description, placeholder:"I'm passionate about photography and I would love to share it with other people and find other photographers around me...", class: "form-control" %>
-          </div>
+        <div class="form-group">
+          <%= f.label :description, class: "control-label font-weight-bold" %><br />
+          <%= f.text_area :description, placeholder:"I'm passionate about photography and I would love to share it with other people and find other photographers around me...", class: "form-control" %>
+        </div>
 
-          <div class="form-group required">
-            <%= f.label :department_id, class: "control-label font-weight-bold" %><br />
-            <div class="select-wrap">
-            <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
+        <div class="form-group required">
+          <%= f.label :department_id, class: "control-label font-weight-bold" %><br />
+          <div class="select-wrap">
+          <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
 
-            <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :name,  prompt: true), {include_blank: "Choose a department"},{ class: "form-control"} %>
+          <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :name,  prompt: true), {include_blank: "Choose a department"}, { class: "form-control"} %>
           </div>
-          </div>
+        </div>
 
-          <div class="form-group ">
-            <%= f.label :profile_picture, "Add a profile picture", class: "control-label font-weight-bold" %><br>
-            <%= f.file_field :profile_picture%>
+        <div class="form-group ">
+          <%= f.label :profile_picture, "Add a profile picture", class: "control-label font-weight-bold" %><br />
+          <%= f.file_field :profile_picture %>
+        </div><br />
 
-          </div>
-          <br />
+        <div class="form-group text-center">
+          <%= f.submit "Sign Up", class: "btn btn-primary rounded py-2 px-4 text-black" %>
+        </div><br />
+        <% end %>
 
-          <div class="form-group text-center">
-            <%= f.submit "Sign Up", class: "booking-confirm hvr-shutter-out-horizontal btn-primary rounded py-2 px-4 text-white" %>
-          </div>
-          <% end %>
-          <br>
-         
-          <div class="text-center">
-             <%= render "devise/shared/links" %>
-          </div>
-       </form>
-
+        <div class="text-center">
+           <%= render "devise/shared/links" %>
+        </div>
       </div>
     </div>
   </div>
