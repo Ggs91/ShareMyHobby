@@ -2,35 +2,27 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-7 mb-5"  data-aos="fade">
-      	  <div class="text-center">
-      	  	<form>
-      	<h2>Forgot your password?</h2>
-      		</div>
+    	  <div class="text-center">
+    	    <h2>Forgot your password?</h2>
+    		</div>
 
 			<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-			  <%= render "devise/shared/error_messages", resource: resource %>
-			  <br>
+			  <%= render "devise/shared/error_messages", resource: resource %><br />
 
 			  <div class="form-group">
-			  <%= f.label :email, class: "control-label font-weight-bold" %><br />
+			    <%= f.label :email, class: "control-label font-weight-bold" %><br />
 			    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
-			  </div>
-			  <br>
+			  </div><br />
 			  <div class="text-center">
-			  <div class="actions">
-			    <%= f.submit "Send me reset password instructions", class: "btn btn-primary rounded"%>
-			  </div>
-			<% end %>
-			<br>
-			<div>
-			<%= render "devise/shared/links" %>
-			</div>
-
-			</div>
-		</form>
-		</div>
-	</div>
+    		  <div class="actions">
+    		    <%= f.submit "Send me reset password instructions", class: "btn btn-primary rounded"%>
+    		  </div>
+    	<% end %><br />
+      		<div>
+      		<%= render "devise/shared/links" %>
+      		</div>
+    		</div>
+		  </div>
+	  </div>
+  </div>
 </div>
-</div>
-</div>
-
