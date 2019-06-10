@@ -64,7 +64,7 @@ private
 
 	def parsed_date_and_time
 		date = params.require(:event).permit(:start_date)  #construction of full event's starting time (date + time) by parsing them through DateTime()
-	  time = params.permit(:time) 	                     #after getting each one separatly through the form
-		return DateTime.parse("#{date} #{time}")
-	end
+	  time = params.permit(:time) 	          					 #after getting each one separatly through the form
+		params[:time].empty? ? nil :  DateTime.parse("#{date} #{time}")
+	end    #We purposely raise date_time's validation by returning nil as its attribute's value if no time is given
 end
