@@ -70,4 +70,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 #Added Gems
 gem "aws-sdk-s3", require: false
 gem "letter_opener"
-gem 'mailjet'
+gem 'mailjet', branch: 'master'
