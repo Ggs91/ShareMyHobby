@@ -1,0 +1,10 @@
+<%= @event.title %>
+<br /><br />
+<a href="/users/edit" class="btn btn-info" role="button">Subscribe</a>
+<a href="/users/edit" class="btn btn-danger" role="button">Unsubscribe</a>
+</div>
+<p>City : <%= @event.department.name %></p>
+<p>Duration : <%= @event.duration %> minutes </p>
+<p>Start Date : <%= @event.start_date%> </p>
+<p>Administrator : <%= @event.administrator_id %> </p>
+<a href="/users/edit" class="btn btn-info" role="button">Profil Administrator</a>
