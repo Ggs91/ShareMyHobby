@@ -1,1 +1,2 @@
-document.getElementById("comment_card col-8").prepend("<%= j render @comment %></br>");
+$("#comment_card").prepend("<%= j render @comment %>");
+$("#comment_body").val("");
