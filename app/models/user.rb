@@ -1,12 +1,13 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  after_create :welcome_send
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   #Callbacks
   before_save :default_values
+  after_create :welcome_send
+
   #Associations
   belongs_to :department
   has_many :administrated_events, foreign_key: 'administrator_id', class_name: "Event", dependent: :destroy
@@ -34,7 +35,7 @@ class User < ApplicationRecord
     self.phone_number = "N/A" if self.phone_number.blank?
     self.description = "No description available" if self.description.blank?
   end
-  
+
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
