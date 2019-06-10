@@ -10,11 +10,6 @@ gem 'activerecord-reset-pk-sequence'
 gem 'jquery-rails'
 gem 'devise'
 gem 'bootstrap'
-
-gem 'simple_form'
-gem 'bootstrap-sass'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
-gem 'momentjs-rails', '>= 2.9' 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use postgresql as the database for Active Record
