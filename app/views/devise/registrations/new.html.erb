@@ -6,7 +6,8 @@
     <h1 class="text-center">Sign Up</h1><br>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= devise_error_messages! %>
+        <%=render "components/alert" %>
 
         <form action="#" class="p-5 bg-white">
 
