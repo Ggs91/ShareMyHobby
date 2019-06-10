@@ -55,12 +55,17 @@
 
           <div class="form-group required">
             <%= f.label :department_id, class: "control-label font-weight-bold" %><br />
-            <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :name,  prompt: true),include_blank: "Choose a department", class: "form-control" %>
+            <div class="select-wrap">
+            <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
+
+            <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :name,  prompt: true), {include_blank: "Choose a department"},{ class: "form-control"} %>
+          </div>
           </div>
 
           <div class="form-group ">
             <%= f.label :profile_picture, "Add a profile picture", class: "control-label font-weight-bold" %><br>
             <%= f.file_field :profile_picture%>
+
           </div>
           <br />
 
@@ -69,9 +74,11 @@
           </div>
           <% end %>
           <br>
+         
           <div class="text-center">
              <%= render "devise/shared/links" %>
           </div>
+       </form>
 
       </div>
     </div>

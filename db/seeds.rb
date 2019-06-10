@@ -16,7 +16,7 @@ Category.reset_pk_sequence
 User.reset_pk_sequence
 Event.reset_pk_sequence
 
-### Department seed ##
+### Department seed (from csv scrapped file in lib/seeds)###
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'departments_names.csv'))
 csv = CSV.parse(csv_text, :encoding => 'ISO-8859-1')
 
@@ -65,7 +65,8 @@ puts "#{User.all.count} users created"
     start_date: DateTime.new(2019,07,rand(15..30)),
     duration: rand(4..12)*5,
     administrator: User.all.sample,
-    category: Category.all.sample
+    category: Category.all.sample,
+    max_participants: 10
   )
   e.participants.concat(User.all.sample(4))
 end
