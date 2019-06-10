@@ -1,3 +1,11 @@
-
-<%= comment.created_at.strftime("%-d %B %Y - %H:%M") %> by
-@<%= comment.user.first_name %> : <%= comment.body %></b>
+<div class="container col-12">
+  <div class="row">
+    <%if comment.user.profile_picture.attached?%>
+      <div class="user_profile_picture">
+        <%= image_tag(comment.user.profile_picture, alt: 'user profil picture' ,width: 40) %>
+      </div>
+    <% end %>
+    <%= comment.created_at.strftime("%-d %B %Y - %H:%M") %> by
+    <%= comment.user.email %> : <%= comment.body %> <br>
+  </div>
+</div>
