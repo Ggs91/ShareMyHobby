@@ -27,6 +27,14 @@ class Event < ApplicationRecord
     self.start_date + self.duration.minutes
   end
 
+  def has_participant?(user) #return true if the user passed as argument is participant
+    self.participants.include?(user)
+  end
+
+  def is_administrated_by?(user)
+    self.administrator == user
+  end
+
 private
 
   def start_date_cannot_be_in_the_past

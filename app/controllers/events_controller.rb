@@ -46,6 +46,7 @@ class EventsController < ApplicationController
 
 	def destroy
 		set_event.destroy
+		flash[:success] = "Your event has been deleted successfully"
 		redirect_to root_path
 	end
 
@@ -56,7 +57,7 @@ private
   end
 
 	def restrict_access_to_current_user  #check if the event subject of the action (thanks to its id in params) is owned by the current user, redirect to root_path otherwise
-		redirect_to root_path, notice: "Action can't be perform, you are not the owner" unless current_user.id == set_event.administrator.id
+		redirect_to root_path, notice: "Action can't be performed, you are not the owner" unless current_user.id == set_event.administrator.id
 	end
 
   def event_params
@@ -66,6 +67,6 @@ private
 	def parsed_date_and_time
 		date = params.require(:event).permit(:start_date)  #construction of full event's starting time (date + time) by parsing them through DateTime()
 	  time = params.permit(:time) 	          					 #after getting each one separatly through the form
-		params[:time].empty? ? nil :  DateTime.parse("#{date} #{time}")
+		params[:time].empty? ? nil : DateTime.parse("#{date} #{time}")
 	end    #We purposely raise date_time's validation by returning nil as its attribute's value if no time is given
 end
