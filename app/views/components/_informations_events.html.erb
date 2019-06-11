@@ -1,0 +1,23 @@
+<center>
+	<%= @event.title %>
+</div>
+<center>
+	<p>
+		City : 
+		<%= @event.department.name %>
+	</p>
+	<p>
+		Duration : 
+		<%= @event.duration %>
+		 minutes 
+	</p>
+	<p>
+		Start Date : 
+		<%= @event.start_date.strftime("%d-%m-%Y") %>
+	</p>
+	<p>
+		Administrator : 
+		<%= @event.administrator_id %>
+	</p>
+</center>
+</center>
