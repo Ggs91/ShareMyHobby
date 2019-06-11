@@ -5,3 +5,4 @@ class MaximumParticipationsValidator < ActiveModel::Validator
     end
   end
 end
+#Make sure that the number of participants will not be higher that max_participations
