@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   end
 
   resources :participations, only: [:index, :create, :destroy]
-
+  resources :users, only: [:show]
+  
   get 'contact', to: 'static_pages#contact'
   get 'about', to: 'static_pages#about'
 end
