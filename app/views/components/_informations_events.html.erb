@@ -5,6 +5,5 @@
 </div>
 <p>City : <%= @event.department.name %></p>
 <p>Duration : <%= @event.duration %> minutes </p>
-<p>Start Date : <%= @event.start_date%> </p>
+<p>Start Date : <%= @event.start_date.strftime("%d-%m-%Y") %> </p>
 <p>Administrator : <%= @event.administrator_id %> </p>
-<a href="/users/edit" class="btn btn-info" role="button">Profil Administrator</a>

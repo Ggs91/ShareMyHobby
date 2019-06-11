@@ -35,144 +35,172 @@
           </div>
         </div>
         <h4 class="h5 mb-4 text-black">Description</h4>
-       <%= @event.description%>
+        <%= @event.description%>
       </div>
       <div class="col-lg-3 ml-auto">
         <div class="mb-5">
-        <%= render "components/informations_events" %></div>
+          <%= render "components/informations_events" %>
+          <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+            <div class="card-header">
+              Organised by :  
+              <h5 style="color: white;">
+                <%= @event.administrator.last_name %>
+              </h5>
             </div>
-        <%= render "components/comments" %></div>
+            <div class="card-body">
+              <h5 class="card-title">
+                <% if @event.administrator.profile_picture.attached? %>
+                <div class="profile-userpic">
+                  <%= image_tag(@event.administrator.profile_picture, height: '190', width: '190', alt: "profile_picture" ) %>
+                </div>
+                <% else %>
+                <% end %>
+              </h5>
+              <p class="card-text">
+                <a class="btn btn-info" role="button" 
+                <%= link_to "Profile", user_path(@event.administrator.id) %>
+              </a>
+              <% if current_user == @event.administrator %>
+              <a href="#" class="btn btn-info" role="button">Edit Event </a>
+              <% else %>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%= render "components/comments" %>
+  </div>
+</div>
+</div>
+</div>
+<div class="site-section bg-light"><div class="container">
+<div class="row mb-5">
+  <div class="col-md-7 text-left border-primary">
+    <h2 class="font-weight-light text-primary">Trending Today</h2>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-lg-6">
+    <div class="d-block d-md-flex listing">
+      <a href="#" class="img d-block" style="background-image: url('/assets/img_2.jpg')"></a>
+      <div class="lh-content">
+        <span class="category">Real Estate</span>
+        <a href="#" class="bookmark"><span class="icon-heart"></span></a>
+        <h3><a href="#">House with Swimming Pool</a></h3>
+        <address>
+          Don St, Brooklyn, New York
+        </address>
+        <p class="mb-0">
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-secondary"></span>
+          <span class="review">(3 Reviews)</span>
+        </p>
+      </div>
+    </div>
+    <div class="d-block d-md-flex listing">
+      <a href="#" class="img d-block" style="background-image: url('/assets/img_3.jpg')"></a>
+      <div class="lh-content">
+        <span class="category">Furniture</span>
+        <a href="#" class="bookmark"><span class="icon-heart"></span></a>
+        <h3><a href="#">Wooden Chair &amp; Table</a></h3>
+        <address>
+          Don St, Brooklyn, New York
+        </address>
+        <p class="mb-0">
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-secondary"></span>
+          <span class="review">(3 Reviews)</span>
+        </p>
+      </div>
+    </div>
+    <div class="d-block d-md-flex listing">
+      <a href="#" class="img d-block" style="background-image: url('/assets/img_4.jpg')"></a>
+      <div class="lh-content">
+        <span class="category">Electronics</span>
+        <a href="#" class="bookmark"><span class="icon-heart"></span></a>
+        <h3><a href="#">iPhone X gray</a></h3>
+        <address>
+          Don St, Brooklyn, New York
+        </address>
+        <p class="mb-0">
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-secondary"></span>
+          <span class="review">(3 Reviews)</span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="d-block d-md-flex listing">
+      <a href="#" class="img d-block" style="background-image: url('/assets/img_1.jpg')"></a>
+      <div class="lh-content">
+        <span class="category">Cars &amp; Vehicles</span>
+        <a href="#" class="bookmark"><span class="icon-heart"></span></a>
+        <h3><a href="#">Red Luxury Car</a></h3>
+        <address>
+          Don St, Brooklyn, New York
+        </address>
+        <p class="mb-0">
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-secondary"></span>
+          <span class="review">(3 Reviews)</span>
+        </p>
+      </div>
+    </div>
+    <div class="d-block d-md-flex listing">
+      <a href="#" class="img d-block" style="background-image: url('/assets/img_2.jpg')"></a>
+      <div class="lh-content">
+        <span class="category">Real Estate</span>
+        <a href="#" class="bookmark"><span class="icon-heart"></span></a>
+        <h3><a href="#">House with Swimming Pool</a></h3>
+        <address>
+          Don St, Brooklyn, New York
+        </address>
+        <p class="mb-0">
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-secondary"></span>
+          <span class="review">(3 Reviews)</span>
+        </p>
+      </div>
+    </div>
+    <div class="d-block d-md-flex listing">
+      <a href="#" class="img d-block" style="background-image: url('/assets/img_3.jpg')"></a>
+      <div class="lh-content">
+        <span class="category">Furniture</span>
+        <a href="#" class="bookmark"><span class="icon-heart"></span></a>
+        <h3><a href="#">Wooden Chair &amp; Table</a></h3>
+        <address>
+          Don St, Brooklyn, New York
+        </address>
+        <p class="mb-0">
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-warning"></span>
+          <span class="icon-star text-secondary"></span>
+          <span class="review">(3 Reviews)</span>
+        </p>
+      </div>
     </div>
   </div>
 </div>
-<div class="site-section bg-light">
-  <div class="container">
-    <div class="row mb-5">
-      <div class="col-md-7 text-left border-primary">
-        <h2 class="font-weight-light text-primary">Trending Today</h2>
-      </div>
-    </div>
-    <div class="row mt-5">
-      <div class="col-lg-6">
-        <div class="d-block d-md-flex listing">
-          <a href="#" class="img d-block" style="background-image: url('/assets/img_2.jpg')"></a>
-          <div class="lh-content">
-            <span class="category">Real Estate</span>
-            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-            <h3><a href="#">House with Swimming Pool</a></h3>
-            <address>
-              Don St, Brooklyn, New York
-            </address>
-            <p class="mb-0">
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-secondary"></span>
-              <span class="review">(3 Reviews)</span>
-            </p>
-          </div>
-        </div>
-        <div class="d-block d-md-flex listing">
-          <a href="#" class="img d-block" style="background-image: url('/assets/img_3.jpg')"></a>
-          <div class="lh-content">
-            <span class="category">Furniture</span>
-            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-            <h3><a href="#">Wooden Chair &amp; Table</a></h3>
-            <address>
-              Don St, Brooklyn, New York
-            </address>
-            <p class="mb-0">
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-secondary"></span>
-              <span class="review">(3 Reviews)</span>
-            </p>
-          </div>
-        </div>
-        <div class="d-block d-md-flex listing">
-          <a href="#" class="img d-block" style="background-image: url('/assets/img_4.jpg')"></a>
-          <div class="lh-content">
-            <span class="category">Electronics</span>
-            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-            <h3><a href="#">iPhone X gray</a></h3>
-            <address>
-              Don St, Brooklyn, New York
-            </address>
-            <p class="mb-0">
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-secondary"></span>
-              <span class="review">(3 Reviews)</span>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="d-block d-md-flex listing">
-          <a href="#" class="img d-block" style="background-image: url('/assets/img_1.jpg')"></a>
-          <div class="lh-content">
-            <span class="category">Cars &amp; Vehicles</span>
-            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-            <h3><a href="#">Red Luxury Car</a></h3>
-            <address>
-              Don St, Brooklyn, New York
-            </address>
-            <p class="mb-0">
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-secondary"></span>
-              <span class="review">(3 Reviews)</span>
-            </p>
-          </div>
-        </div>
-        <div class="d-block d-md-flex listing">
-          <a href="#" class="img d-block" style="background-image: url('/assets/img_2.jpg')"></a>
-          <div class="lh-content">
-            <span class="category">Real Estate</span>
-            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-            <h3><a href="#">House with Swimming Pool</a></h3>
-            <address>
-              Don St, Brooklyn, New York
-            </address>
-            <p class="mb-0">
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-secondary"></span>
-              <span class="review">(3 Reviews)</span>
-            </p>
-          </div>
-        </div>
-        <div class="d-block d-md-flex listing">
-          <a href="#" class="img d-block" style="background-image: url('/assets/img_3.jpg')"></a>
-          <div class="lh-content">
-            <span class="category">Furniture</span>
-            <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-            <h3><a href="#">Wooden Chair &amp; Table</a></h3>
-            <address>
-              Don St, Brooklyn, New York
-            </address>
-            <p class="mb-0">
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-warning"></span>
-              <span class="icon-star text-secondary"></span>
-              <span class="review">(3 Reviews)</span>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+</div>
 </div>
 </div>
 </div>
