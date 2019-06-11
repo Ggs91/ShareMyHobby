@@ -19,11 +19,11 @@
           <% end %>
         </h5>
         <center>
+          <% if current_user == @event.administrator %>
           <p class="card-text">
             <a class="btn btn-info" role="button"
             <%= link_to "Profile", user_path(@event.administrator.id) %>
           </a>
-          <% if current_user == @event.administrator %>
           <a href="#" class="btn btn-info" role="button">Edit Event </a>
           <% else %>
           <% end %>
