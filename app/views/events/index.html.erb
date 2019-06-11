@@ -47,28 +47,16 @@
             <p class="color-black-opacity-5">Lorem Ipsum Dolor Sit Amet</p>
           </div>
         </div>
-
         <div class="row">
+          <% @events.each_slice(1) do |row| %>
+          <% row.each do |event| %>
           <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
             <%= render "components/event_card" %>
+          <% end %>
+      </div>
+  <% end%>
+</div>
           </div>
-          <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-            <%= render "components/event_card" %>
-          </div>
-
-          <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-           <%= render "components/event_card" %>
-          </div>
-
-          <div class="col-md-6 mb-4 mb-lg-4 col-lg-6">
-          <%= render "components/event_card" %>
-          </div>
-
-          <div class="col-md-6 mb-4 mb-lg-4 col-lg-6">
-               <%= render "components/event_card" %>
-          </div>
-          
-
         </div>
       </div>
     </div>
