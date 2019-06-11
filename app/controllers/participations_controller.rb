@@ -5,6 +5,7 @@ class ParticipationsController < ApplicationController
 
   def index
     @participations = set_event.participants
+    @event = set_event
   end
 
   def create
