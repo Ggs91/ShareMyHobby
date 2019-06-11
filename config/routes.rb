@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root 'events#index'
   resources :events, except: [:index] do
     resources :comments, only: [:create]
   end
@@ -8,9 +8,9 @@ Rails.application.routes.draw do
     resources :profile_pictures, only: [:create]
   end
 
-  resources :participations, only: [:index, :create, :destroy]
   resources :users, only: [:show]
-  
+  resources :participations, only: [:index, :create, :destroy]
+
   get 'contact', to: 'static_pages#contact'
   get 'about', to: 'static_pages#about'
 end
