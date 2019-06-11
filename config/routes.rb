@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :profile_pictures, only: [:create]
   end
 
+  resources :users, only: [:show]
+
   get 'contact', to: 'static_pages#contact'
   get 'about', to: 'static_pages#about'
 end
