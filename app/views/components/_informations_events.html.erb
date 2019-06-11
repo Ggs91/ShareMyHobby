@@ -1,26 +1,26 @@
 <center>
 	<p>
-		Start Date :
+		<b>Start Date :</b>
 		<%= @event.starting_date %>
 	</p>
 	<p>
-		Duration :
+		<b>Duration :</b>
 		<%= @event.duration %> minutes
 	</p>
 	<p>
-		Location :
+		<b>Location :</b>
 		<%= @event.location %>
 	</p>
 	<p>
-		Department :
+		<b>Department :</b>
 		<%= @event.department.name %>
 	</p>
 	<p>
-		Max.Participants :
+		<b>Max.Participants :</b>
 		<%= @event.max_participants %>
 	</p>
 	<p>
-		State :
+		<b>State :</b>
 		<% if @event.has_place_available? %>
 			<%= @event.number_of_places_available %> place(s) available
 		<% else %>
