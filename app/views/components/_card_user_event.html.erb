@@ -4,7 +4,7 @@
       <div class="card-header">
         Organised by :
         <h7 style="color: white;">
-          <%= @event.administrator.last_name %>
+          <%= link_to @event.administrator_full_name, user_path(@event.administrator) %>
         </h7>
       </div>
       <div class="card-body">
@@ -18,20 +18,20 @@
           <% else %>
           <% end %>
         </h5>
-        <center>
-          <% if current_user == @event.administrator %>
-          <p class="card-text">
-            <a class="btn btn-info" role="button"
-            <%= link_to "Profile", user_path(@event.administrator.id) %>
-          </a>
-          <a href="#" class="btn btn-info" role="button">Edit Event </a>
-          <% else %>
-          <% end %>
-        </p>
-      </center>
       <%= render "components/informations_events" %>
-      <a href="/users/edit" class="btn btn-info" role="button">Subscribe</a>
-      <a href="/users/edit" class="btn btn-danger" role="button">Unsubscribe</a>
+    </div>
+    <% if user_signed_in? %>
+      <% if @event.is_administrated_by?(current_user) %>
+        <%= link_to "See event space", participations_path(id: @event.id), class: "btn btn-info" %>
+      <% elsif @event.has_participant?(current_user)%>
+        You are part of this event !
+        <%= link_to "Cancel", participation_path(id: @event.id), method: :delete, class: "btn btn-danger" %>
+      <% elsif @event.has_place_available? %>
+      <%= link_to "Join in !", participations_path(id: @event.id), method: :post, class: "btn btn-info" %>
+      <% end %>
+    <% else %>
+       Wanna join this event ? <%= link_to "Sign up !", new_user_registration_path, class: "btn btn-info" %>
+    <% end %>
     </div>
   </div>
 </div>
