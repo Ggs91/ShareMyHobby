@@ -1,23 +1,30 @@
 <center>
-	<%= @event.title %>
-</div>
-<center>
 	<p>
-		City : 
+		Start Date :
+		<%= @event.starting_date %>
+	</p>
+	<p>
+		Duration :
+		<%= @event.duration %> minutes
+	</p>
+	<p>
+		Location :
+		<%= @event.location %>
+	</p>
+	<p>
+		Department :
 		<%= @event.department.name %>
 	</p>
 	<p>
-		Duration : 
-		<%= @event.duration %>
-		 minutes 
+		Max.Participants :
+		<%= @event.max_participants %>
 	</p>
 	<p>
-		Start Date : 
-		<%= @event.start_date.strftime("%d-%m-%Y") %>
+		State :
+		<% if @event.has_place_available? %>
+			<%= @event.number_of_places_available %> place(s) available
+		<% else %>
+			No more place available
+		<% end %>
 	</p>
-	<p>
-		Administrator : 
-		<%= @event.administrator_id %>
-	</p>
-</center>
 </center>
