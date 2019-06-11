@@ -4,9 +4,8 @@
       <div class="col-md-10" data-aos="fade-up" data-aos-delay="400">
         <div class="row justify-content-center mt-5">
           <div class="col-md-8 text-center">
-            <h1>Red Luxury Car</h1>
+            <h1> <%= @event.title%></h1>
             <p class="mb-0">
-              Don St, Brooklyn, New York
             </p>
           </div>
         </div>
@@ -37,37 +36,7 @@
         <h4 class="h5 mb-4 text-black">Description</h4>
         <%= @event.description%>
       </div>
-      <div class="col-lg-3 ml-auto">
-        <div class="mb-5">
-          <%= render "components/informations_events" %>
-          <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-            <div class="card-header">
-              Organised by :  
-              <h5 style="color: white;">
-                <%= @event.administrator.last_name %>
-              </h5>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">
-                <% if @event.administrator.profile_picture.attached? %>
-                <div class="profile-userpic">
-                  <%= image_tag(@event.administrator.profile_picture, height: '190', width: '190', alt: "profile_picture" ) %>
-                </div>
-                <% else %>
-                <% end %>
-              </h5>
-              <p class="card-text">
-                <a class="btn btn-info" role="button" 
-                <%= link_to "Profile", user_path(@event.administrator.id) %>
-              </a>
-              <% if current_user == @event.administrator %>
-              <a href="#" class="btn btn-info" role="button">Edit Event </a>
-              <% else %>
-              <% end %>
-            </p>
-          </div>
-        </div>
-      </div>
+      <%= render "components/card_user_event"%>
     </div>
     <%= render "components/comments" %>
   </div>
