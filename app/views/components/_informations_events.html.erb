@@ -1,9 +1,23 @@
-<%= @event.title %>
-<br /><br />
-<a href="/users/edit" class="btn btn-info" role="button">Subscribe</a>
-<a href="/users/edit" class="btn btn-danger" role="button">Unsubscribe</a>
+<center>
+	<%= @event.title %>
 </div>
-<p>City : <%= @event.department.name %></p>
-<p>Duration : <%= @event.duration %> minutes </p>
-<p>Start Date : <%= @event.start_date.strftime("%d-%m-%Y") %> </p>
-<p>Administrator : <%= @event.administrator_id %> </p>
+<center>
+	<p>
+		City : 
+		<%= @event.department.name %>
+	</p>
+	<p>
+		Duration : 
+		<%= @event.duration %>
+		 minutes 
+	</p>
+	<p>
+		Start Date : 
+		<%= @event.start_date.strftime("%d-%m-%Y") %>
+	</p>
+	<p>
+		Administrator : 
+		<%= @event.administrator_id %>
+	</p>
+</center>
+</center>
