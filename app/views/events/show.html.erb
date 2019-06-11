@@ -41,23 +41,7 @@
         <div class="mb-5">
         <%= render "components/informations_events" %></div>
             </div>
-      <div class="container">
-        <div class="comment_post_form">
-          <%= form_with model: [@event, @comment] do |f| %>
-          <%= f.text_field :body, class:"form-control col-6" %>
-          <br>
-          <%= f.submit "Comment on this article"%>
-          <% end %>
-          <br>
-        </div>
-        <div id="comment_card">
-          <% @comments.each do |comment| %>
-          <p>
-            <%= render "comments/comment", comment: comment %>
-          </p>
-          <% end %>
-        </div>
-      </div>
+        <%= render "components/comments" %></div>
     </div>
   </div>
 </div>
