@@ -4,4 +4,3 @@ class Participation < ApplicationRecord
   belongs_to :user
   belongs_to :event
 end
-#Make sure that the number of participants will not be higher that max_participations
