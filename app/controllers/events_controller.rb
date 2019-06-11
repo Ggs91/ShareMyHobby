@@ -25,7 +25,8 @@ class EventsController < ApplicationController
 	def show
 		@event = set_event
 		@comment = Comment.new
-		@comments = @event.comments.order("created_at DESC") #comments will appear on descending order (the last comment will be the first etc..)
+		@comments = @event.comments.order("created_at DESC")
+		#comments will appear on descending order (the last comment will be the first etc..)
 	end
 
 	def edit
