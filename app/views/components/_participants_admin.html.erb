@@ -4,9 +4,9 @@
     <h2 class="font-weight-light text-primary">Participants</h2>
   </div>
 </div>
-<% @event.participants.each do |participant| %>
 <div class="row mt-5">
   <div class="col-lg-6">
+    <% @event.participants.each do |participant| %>
     <div class="d-block d-md-flex listing">
       <% if participant.profile_picture.attached? %>
         <%= image_tag(participant.profile_picture, alt: 'profile picture') %>
@@ -17,9 +17,11 @@
         <h3><a class="btn btn-primary" <%= link_to  "Profile" , user_path(participant.id) %></a>
           </h3>
       </div>
+          
     </div>
+    <% end %>
   </div>
+
 </div>
 </div>
-<% end %>
-</div>
+
