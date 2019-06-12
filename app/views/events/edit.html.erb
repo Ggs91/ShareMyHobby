@@ -57,7 +57,12 @@
             <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
             <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :name,  prompt: true, selected: @event.department.id), { include_blank: "Choose a department" }, { :class => 'form-control' } %>
           </div>
-        </div><br />
+        </div>
+
+        <div class="form-group ">
+          <%= f.label :picture, "Add a new picture for this event", class: "control-label font-weight-bold" %><br />
+          <%= f.file_field :picture, accept:".jpg,.png,.jpeg" %>
+        </div><br>
 
         <%= f.submit "Update Event", class: "btn btn-primary rounded py-2 px-4 text-black" %>
         <% end %>
