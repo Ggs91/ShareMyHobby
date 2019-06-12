@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
 	before_action :set_event, only: [:show, :edit, :update, :destroy]
-	before_action :restrict_access_to_current_user, only: [:edit, :update, :destroy]
+	before_action :restrict_access_to_administrator, only: [:edit, :update, :destroy]
 
 	def index
 		@events = Event.all.order("created_at DESC")
@@ -56,8 +56,8 @@ private
     @event = Event.find(params[:id])
   end
 
-	def restrict_access_to_current_user  #check if the event subject of the action (thanks to its id in params) is owned by the current user, redirect to root_path otherwise
-		redirect_to root_path, notice: "Action can't be performed, you are not the owner" unless current_user.id == set_event.administrator.id
+	def restrict_access_to_administrator  #check if the event subject of the action (thanks to its id in params) is owned by the current user, redirect to root_path otherwise
+		redirect_to root_path, notice: "Action can't be performed, you are not the event's creator" unless current_user.id == set_event.administrator.id
 	end
 
   def event_params
