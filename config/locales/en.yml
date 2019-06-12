@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+
+  helpers:
+    submit:
+      event:
+        create: "Share My Hobby!"
+        update: "Update Event Infos"
