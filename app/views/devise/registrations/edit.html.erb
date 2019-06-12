@@ -80,7 +80,7 @@
         <% if !@user.profile_picture.attached? %>
         <div class="form-group">
           <%= f.label :profile_picture, "Change your profile picture", class: "h4" %><br>
-          <%= f.file_field :profile_picture, accept:".jpg,.png,.jpeg %>
+          <%= f.file_field :profile_picture %>
         </div>
         <% end %>
 
