@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   #Callbacks
   before_save :default_values
-  #after_create :welcome_send
+  after_create :welcome_send
 
   #Associations
   belongs_to :department
