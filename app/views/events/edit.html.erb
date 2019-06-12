@@ -58,9 +58,9 @@
             <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :name,  prompt: true, selected: @event.department.id), { include_blank: "Choose a department" }, { :class => 'form-control' } %>
           </div>
         </div><br />
-
-        <%= f.submit "Update Event", class: "btn btn-primary rounded py-2 px-4 text-black" %>
+        <%= f.submit class: "btn btn-primary rounded py-2 px-4 text-black" %>
         <% end %>
+      </div>
       </div>
     </div>
   </div>
