@@ -1,12 +1,15 @@
 <div class="container">
-  <div class="comment_post_form">
-    <%= form_with model: [@event, @comment] do |f| %>
-    <%= f.text_field :body, class:"form-control col-6" %>
-    <br>
-    <%= f.submit "Comment on this article"%>
-    <% end %>
-    <br>
-  </div>
+  <% if user_signed_in? %>
+    <div class="comment_post_form">
+      <%= form_with model: [@event, @comment] do |f| %>
+      <%= f.text_field :body, class:"form-control col-6" %>
+      <br />
+      <%= f.submit "Comment on this article", class: "btn btn-primary rounded py-2 px-4 text-black" %>
+      <% end %>
+      <br />
+    </div>
+  <% end %>
+
   <div id="comment_card">
     <% @comments.each do |comment| %>
     <p>
