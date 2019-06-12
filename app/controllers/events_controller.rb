@@ -61,7 +61,7 @@ private
 	end
 
   def event_params
-    params.require(:event).permit(:title, :description, :duration, :location, :category_id, :department_id, :max_participants)
+    params.require(:event).permit(:title, :description, :duration, :location, :category_id, :department_id, :max_participants, :picture)
 	end
 
 	def parsed_date_and_time

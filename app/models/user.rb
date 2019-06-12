@@ -2,8 +2,6 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
   #Callbacks
   before_save :default_values
   #after_create :welcome_send
@@ -24,6 +22,10 @@ class User < ApplicationRecord
   validates :department, presence: {:message => ": Please choose a department" }
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 
   def age  #calculate a user age based on it's date_ob_birth attribute. Set to N/A if no date submitting
     self.date_of_birth.nil? ? "N/A" : ((Time.zone.now - self.date_of_birth.to_time) / 1.year.seconds).floor
