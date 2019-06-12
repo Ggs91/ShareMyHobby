@@ -22,7 +22,7 @@ class ParticipationsController < ApplicationController
 private
 
   def set_event
-    @event = Event.find(params.require[:id])
+    @event = Event.find(params[:id])
   end
 
   def restrict_access_to_administrator
