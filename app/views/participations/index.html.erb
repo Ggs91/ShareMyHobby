@@ -15,30 +15,7 @@
 </div>
 <br /> <br />
 <%= render "components/card_participation"%>
+<%= render "components/participants_admin"%>
 
-<div class="site-section bg-light"><div class="container">
-<div class="row mb-5">
-  <div class="col-md-7 text-left border-primary">
-    <h2 class="font-weight-light text-primary">Participants</h2>
-  </div>
-</div>
-<% @event.participants.each do |participant| %>
-<div class="row mt-5">
-  <div class="col-lg-6">
-    <div class="d-block d-md-flex listing">
-      <% if participant.profile_picture.attached? %>
-        <%= image_tag(participant.profile_picture, alt: 'profile picture') %>
-      <% end %>
-      <div class="lh-content">
-        <span class="category"> <%= participant.last_name %>
-          <%= participant.first_name %></span>
-        <h3><a class="btn btn-primary" <%= link_to  "Profile" , user_path(participant.id) %></a>
-          </h3>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-<% end %>
-</div>
+
 
