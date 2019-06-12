@@ -4,7 +4,8 @@ class ParticipationsController < ApplicationController
   before_action :set_event, only: [:index, :create, :destroy]
 
   def index
-    @participations = @event.participants
+    @participations = set_event.participants
+    @event = set_event
   end
 
   def create
