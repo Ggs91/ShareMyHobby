@@ -1,11 +1,24 @@
-<div class="container col-12">
-  <div class="row">
-    <%if comment.user.profile_picture.attached?%>
-      <div class="user_profile_picture">
+<div class="container">
+<div class="row">
+<div class="col-sm-1">
+<div class="thumbnail">
+	<%if comment.user.profile_picture.attached?%>
+     <div class="user_profile_picture">
         <%= image_tag(comment.user.profile_picture, alt: 'user profil picture' ,width: 40) %>
-      </div>
+     </div>
     <% end %>
-    <%= comment.creation_date %> by
-    <%= link_to comment.commenter_full_name, user_path(comment.user.id) %> : <%= comment.body %> <br />
-  </div>
+</div><!-- /thumbnail -->
+</div><!-- /col-sm-1 -->
+<div class="col-sm-5">
+<div class="panel panel-default">
+<div class="panel-heading">
+<strong><%= link_to comment.commenter_full_name, user_path(comment.user.id) %> :</strong> 
+</div>
+<div class="panel-body">
+<%= comment.body %> <br />
+<span class="text-muted"><%= comment.creation_date %></span>
+</div><!-- /panel-body -->
+</div><!-- /panel panel-default -->
+</div><!-- /col-sm-5 -->
+</div>
 </div>
