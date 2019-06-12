@@ -25,8 +25,8 @@ class Event < ApplicationRecord
     self.number_of_places_available > self.participants.count
   end
 
-  def end_date
-    self.start_date + self.duration.minutes
+  def starting_date
+    self.start_date.strftime("%d-%m-%Y") + " at " + self.start_date.strftime("%H:%M")
   end
 
   def has_participant?(user) #return true if the user passed as argument is participant
@@ -35,6 +35,10 @@ class Event < ApplicationRecord
 
   def is_administrated_by?(user)
     self.administrator == user
+  end
+
+  def administrator_full_name
+    self.administrator.first_name + " " + self.administrator.last_name
   end
 
 private
