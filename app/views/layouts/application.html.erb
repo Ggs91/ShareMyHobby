@@ -24,7 +24,7 @@
 
   <body>
     <%= render "components/modal/header" %>
-    <%= yield %>
+    <div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
     <%= render "components/modal/footer" %>
     <%= render "components/scripts" %>
   </body>

@@ -9,7 +9,16 @@ class UserMailer < ApplicationMailer
     #The user just need to clik on the link to be redirect to our website
     @url  = 'https://share-my-hobby-production.herokuapp.com/users/sign_in'
 
-    mail(to: @user.email, subject: 'Bienvenue chez nous !')
+    mail(to: @user.email, subject: 'Welcome to ShareMyHobby!')
+  end
+
+  def participation_email(participation)
+    @participation = participation
+    @user = @participation.user
+    @event = @participation.event
+
+    @url  = "https://share-my-hobby-production.herokuapp.com/"
+    mail(to: @user.email, subject: "You'registration is confirm to #{@event.description}")
   end
 
 end
