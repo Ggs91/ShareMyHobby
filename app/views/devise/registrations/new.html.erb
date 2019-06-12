@@ -22,7 +22,7 @@
         </div>
 
         <div class="form-group required">
-          <%= f.label :email, class: "control-label font-weight-bold" %></br>
+          <%= f.label :email, class: "control-label font-weight-bold" %><br>
           <%= f.email_field :email, placeholder: "Enter Email", autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
 
@@ -65,7 +65,7 @@
 
         <div class="form-group ">
           <%= f.label :profile_picture, "Add a profile picture", class: "control-label font-weight-bold" %><br />
-          <%= f.file_field :profile_picture %>
+          <%= f.file_field :profile_picture, accept:".jpg,.png,.jpeg" %>
         </div><br />
 
         <div class="form-group text-center">
