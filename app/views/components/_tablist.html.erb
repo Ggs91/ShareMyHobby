@@ -14,7 +14,9 @@
     <% @event.participants.each do |participant| %>
     <br>
     <div class="card" style="width: 20rem;">
-        <%= image_tag(participant.profile_picture(alt: "Card image cap", class: "card-img-top")) if participant.profile_picture.attached?%>
+       <% if participant.profile_picture.attached? %>
+    <%= image_tag(participant.profile_picture, alt: 'profile picture') %>
+<% end %>
       <div class="card-body">
         <h5 class="card-title">
           <%= participant.last_name %>
@@ -35,3 +37,4 @@
     <%= render "components/comments" %>
   </div>
 </div>
+
