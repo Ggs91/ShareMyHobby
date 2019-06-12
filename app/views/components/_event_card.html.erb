@@ -15,8 +15,7 @@
                 
            <span class="address"><%= event.location %></span><br>
           
-           <%= link_to "See more", @event, class: "btn-primary btn-sm round" %>
-
+           <%= link_to "See more", event_path(event.id), class: "btn-primary btn-sm round" %>
        
         </div>
       </div>
