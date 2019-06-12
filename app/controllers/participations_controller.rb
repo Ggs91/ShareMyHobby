@@ -9,21 +9,21 @@ class ParticipationsController < ApplicationController
   end
 
   def create
-    Participation.create(user: current_user, event: set_event)
+    Participation.create(user: current_user, event: @event)
     flash[:success] = "You're now part of this event !"
-    redirect_to set_event
+    redirect_to @event
   end
 
   def destroy
-    Participation.find_by(user: current_user, event: set_event).destroy
+    Participation.find_by(user: current_user, event: @event).destroy
 		flash[:notice] = "Participation canceled successfully"
-		redirect_to set_event
+		redirect_to @event
   end
 
 private
 
   def set_event
-    Event.find(params.require(:id))
+    @event = Event.find(params[:id])
   end
 
   def restrict_access_to_administrator
