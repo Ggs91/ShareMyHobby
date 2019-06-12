@@ -1,65 +1,33 @@
 <%= render "components/search_top" %>
 <div class="site-section bg-light">
   <div class="container">
-    <div class="overlap-category mb-5">
-      <div class="row align-items-stretch no-gutters">
-        <div class="col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
-          <a href="#" class="popular-category h-100">
-            <span class="icon"><span class="flaticon-house"></span></span>
-            <span class="caption mb-2 d-block">Real Estate</span>
-            <span class="number">3,921</span>
-          </a>
-        </div>
-        <div class="col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
-          <a href="#" class="popular-category h-100">
-            <span class="icon"><span class="flaticon-books"></span></span>
-            <span class="caption mb-2 d-block">Books &amp; Magazines</span>
-            <span class="number">398</span>
-          </a>
-        </div>
-        <%= render "components/category_card" %>
-        <div class="col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
-          <a href="#" class="popular-category h-100">
-            <span class="icon"><span class="flaticon-car"></span></span>
-            <span class="caption mb-2 d-block">Cars &amp; Vehicles</span>
-            <span class="number">29,221</span>
-          </a>
-        </div>
-        <div class="col-sm-6 col-md-4 mb-4 mb-lg-0 col-lg-2">
-          <a href="#" class="popular-category h-100">
-            <span class="icon"><span class="flaticon-pizza"></span></span>
-            <span class="caption mb-2 d-block">Other</span>
-            <span class="number">219</span>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="site-section" data-aos="fade">
-      <div class="container">
-        <div class="row justify-content-center mb-5">
-          <div class="col-md-7 text-center border-primary">
+    <%= render 'components/categories' %>
+      <div class="site-section" data-aos="fade">
+        <div class="container">
+           <div class="row align-items-center">
+               <div class="col-5 border-primary ">
+                    <h2 class="font-weight-light text-primary display-1">Better together</h2>
+
+                    <p>ShareMyHobby is a platform for finding and building local communities. People use ShareMyHobby learn new things, meet new people, challenge themselves, and pursue their passions, together.</p>
+
+                  </div>
+                <div class="col-6 img-fluidfloat-right w-10">
+                <%= image_tag "front-image.jpg" %>
+               </div>
+          </div>
+                    
+        <div class="row justify-content-center mb-4 align-items-center">
+          <div class="col-md-7 text-center border-primary"><br><br>
             <h2 class="font-weight-light text-primary">Latest Events</h2>
             <p class="color-black-opacity-5">
-              Lorem Ipsum Dolor Sit Amet
+            Join the latest events around!
             </p>
           </div>
         </div>
+
+        <div class="container">
         <div class="row">
-          <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-            <%= render "components/event_card" %>
-          </div>
-          <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-            <%= render "components/event_card" %>
-          </div>
-          <div class="col-md-6 mb-4 mb-lg-4 col-lg-4">
-            <%= render "components/event_card" %>
-          </div>
-          <div class="col-md-6 mb-4 mb-lg-4 col-lg-6">
-            <%= render "components/event_card" %>
-          </div>
-          <div class="col-md-6 mb-4 mb-lg-4 col-lg-6">
-            <%= render "components/event_card" %>
-          </div>
+          <%= render 'components/event_card' %>
         </div>
       </div>
     </div>

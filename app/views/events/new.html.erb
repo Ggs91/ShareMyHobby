@@ -1,11 +1,11 @@
 <div class="site-section bg-light">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row justify-content-center">
-      <div class="col-md-7 mb-5 mt-5" data-aos="fade">
+      <div class="col-11 mb-3 mt-5" data-aos="fade">
 
         <% if @event.errors.any? %>
           <div class="alert alert-warning" role="alert">
-            <p>Votre événement n'a pas pu être créer pour la (ou les) raison(s) suivante(s) :</p>
+            <p>Votre événement n'a pas pu être crée pour la (ou les) raison(s) suivante(s) :</p>
             <ul>
               <% @event.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
@@ -14,71 +14,18 @@
           </div>
         <% end %>
 
-        <h2>Create Your Event !</h2>
-        <h2>Share Your Hobby & Meet new Feelows that Share the same Passion !</h2><br />
+        <div class="row">
+          <div class="col-3 border-primary ">
+            <h2 class="font-weight-light text-primary display-2">Create an event</h2>
 
-        <%= form_for @event do |f| %>
+            <p>Share Your Hobby & Meet new Fellows that Share the same Passion !</p>
 
-        <div class="form-group">
-          <%= f.label :category_id, class: "h4" %><br />
-          <div class="select-wrap">
-            <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
-            <%= f.select :category_id, options_from_collection_for_select(Category.all, :id, :name,  prompt: true),{ include_blank: "Choose a category" }, { :class => 'form-control' } %>
+          </div>
+
+          <div class='col-9'>
+            <%= render "components/form-event" %>
           </div>
         </div>
-
-        <div class="form-group">
-          <%= f.label :title, class: "h4" %> :</br>
-          <%= f.text_field :title, placeholder: "Ex: Come watch me perform at comedy bar this saturday !", class: "form-control" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :description, class: "h4" %> :</br>
-          <%= f.text_area :description, placeholder: "In few words:\n-Introduce your hobby and what you love about it\n-Describe your event proposition (live demo, workshop...)\n-Place (your place, café, park, showplace..)\n-Notes for your hosts (invit them to bring they own instrument...", rows: "5", class: "form-control" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :max_participants, "Max hosts", class: "h4" %><br>
-          <%= f.number_field :max_participants, in: 1..10000, step: 1, placeholder: 'Maximum places available', class: 'form-control' %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :start_date, 'Date (default: today)', class: "h4" %><br>
-          <%= f.date_field :start_date, min: Date.today, value: Date.today, class: 'form-control' %>
-        </div>
-
-        <!-- tag_fields for retrieving time input, because no "time" attribute for a form_for to infer. "Time" attribute will be parsed with "date" in events controller -->
-        <div class="form-group">
-          <%= label_tag 'time', 'Starting time', class: "h4" %>
-          <%= time_field_tag 'time', "", class: 'form-control' %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :duration, "Event duration time (minutes)", class: "h4" %><br>
-          <%= f.number_field :duration, in: 5..1000, step: 5, placeholder: "Duration time", class: 'form-control' %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :location, "Event Location", class: "h4" %><br>
-          <%= f.text_field :location, placeholder: "Street, city", class: "form-control" %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :department_id, class: "h4" %><br />
-          <div class="select-wrap">
-            <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
-            <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :name,  prompt: true), { include_blank: "Choose a department" }, { :class => 'form-control' } %>
-          </div>
-        </div>
-        <div class="form-group ">
-          <%= f.label :picture, "Add a picture for this event", class: "control-label font-weight-bold" %><br />
-          <%= f.file_field :picture, accept:".jpg,.png,.jpeg" %>
-        </div>
-
-        <br />
-
-        <%= f.submit "Share My Hobby !", class: "btn btn-primary rounded py-2 px-4 text-black" %>
-        <% end %>
       </div>
     </div>
   </div>
