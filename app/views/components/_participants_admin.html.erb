@@ -1,32 +1,48 @@
-<div class="site-section bg-light"><div class="container">
-<div class="row mb-5">
-  <div class="col-md-7 text-left border-primary">
-    <h2 class="font-weight-light text-primary">Participants</h2>
-  </div>
-</div>
-<div class="row mt-5">
-  <div class="col-lg-6">
-    <% @event.participants.each do |participant| %>
-    <div class="d-block d-md-flex listing">
-      <% if participant.profile_picture.attached? %>
-        <%= image_tag(participant.profile_picture, alt: 'profile picture') %>
-      <% end %>
-      <div class="lh-content">
-        <span class="category"> <%= participant.last_name %>
-          <%= participant.first_name %></span>
-          <h3> <p> Age : <%= participant.age %> </p>
-           <p> City :  <%= participant.department.name %> </p>
-            <p> Phone Number :  <%= participant.phone_number %> </p>
-             <p> Email : <%= participant.email %> </p>
-            </h3>
-        <h3><a class="btn btn-primary" <%= link_to  "Profile" , user_path(participant.id) %></a>
-          </h3>
+<div class="site-section bg-light">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-7 text-left border-primary">
+        <h2 class="font-weight-light text-primary">Participants</h2>
       </div>
-          
     </div>
-    <% end %>
+    <div class="row mt-5">
+      <div class="col-lg-6">
+        <% @event.participants.each do |participant| %>
+        <div class="d-block d-md-flex listing">
+          <% if participant.profile_picture.attached? %>
+          <%= image_tag(participant.profile_picture, alt: 'profile picture') %>
+          <% end %>
+          <div class="lh-content">
+            <span class="category">
+              <%= participant.last_name %>
+              <%= participant.first_name %>
+            </span>
+            <h3>
+              <p>
+                 Age : 
+                <%= participant.age %>
+              </p>
+              <p>
+                 City :  
+                <%= participant.department.name %>
+              </p>
+              <p>
+                 Phone Number :  
+                <%= participant.phone_number %>
+              </p>
+              <p>
+                 Email : 
+                <%= participant.email %>
+              </p>
+            </h3>
+            <h3>
+              <a class="btn btn-primary" 
+              <%= link_to  "Profile" , user_path(participant.id) %>
+            </a>
+          </h3>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
-
 </div>
-</div>
-
