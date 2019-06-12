@@ -29,12 +29,12 @@
         <div class="form-group required">
           <%= f.label :password, class: "control-label font-weight-bold" %> <% if @minimum_password_length %>(<%= @minimum_password_length %> characters minimum)<br />
           <% end %>
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password Required", class: "form-control" %>
         </div>
 
         <div class="form-group required">
           <%= f.label :password_confirmation, class: "control-label font-weight-bold" %><br />
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password Confirmation Required", class: "form-control" %>
         </div>
 
         <div class="form-row">
