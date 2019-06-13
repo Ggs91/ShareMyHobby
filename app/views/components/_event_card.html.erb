@@ -1,9 +1,14 @@
-<% @events.limit(12).each do |event| %>
+<% @events.limit(6).each do |event| %>
   <div class="col-md-4 mb-3 mb-lg-4 col-lg-4">
     <div class="listing-item">
 
         <div class="listing-image">
-           <%= image_tag("img_1.jpg", alt: "Image", class: "img-fluid")%>
+          <% if event.picture.attached? %>
+          <%= image_tag(event.picture, alt: 'Image', class: "img-fluid",  width: 730) %>
+          <% else %>
+          <%= image_tag("img_1.jpg", alt: "Image", class: "img-fluid")%>
+          <% end %>
+
         </div>
 
         <div class="listing-item-content">
@@ -23,7 +28,6 @@
         <h2 class="mb-1"><%= event.title %></h2>
         <span class="address"><%= event.location %></span><br>
         <%= link_to "See more", event, class: "btn-primary btn-sm round" %>
-
       </div>
     </div>
   </div>
