@@ -18,13 +18,30 @@
     <div class="row">
       <div class="col-lg-8">
         <div class="mb-4">
+          <div class="listing-item">
+           <div class="listing-image">
           <div>
             <% if @event.picture.attached? %>
               <%= image_tag(@event.picture, alt: 'Image', class: "img-fluid",  width: 730) %>
             <% end %>
           </div>
+          <div class="listing-item-content">
+          <% if user_signed_in? %>
+            <% if liked?(@event) %>
+              <%= link_to like_path(id: @event, like_id: liked?(@event)), class: "bookmark", method: :delete do %>
+              <span class="icon-heart" style ="color:red;"> <center><%= @event.likes.count %></center></span>
+              <% end %>
+            <% else %>
+              <%= link_to likes_path(id: @event.id), class: "bookmark", method: :post do %>
+              <span class="icon-heart"> <center> <%= @event.likes.count %> </center></span>
+              <% end %>
+            <% end %>
+          <% end %>
         </div>
-        <%= render "components/tablist"%>
+      </div>
+    </div>
+      </div>
+      <%= render "components/tablist"%>
       </div>
       <%= render "components/card_user_event"%>
     </div>
