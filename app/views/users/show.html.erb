@@ -25,6 +25,12 @@
       </div>
       <div class="col-md-5 ml-auto">
         <h2 class="text-primary mb-3">
+          <% if user_signed_in? && @user != current_user %>
+            <p>Not your profil</p>
+            <button type="button" name="button">Follow</button>
+          <% else %>
+            <p>Really??</p>
+          <% end %>
           <%= render "components/informations_users" %>
       </div>
       </div>
