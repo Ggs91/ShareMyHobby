@@ -26,10 +26,14 @@
       <div class="col-md-5 ml-auto">
         <h2 class="text-primary mb-3">
           <% if user_signed_in? && @user != current_user %>
-            <p>Not your profil</p>
+            <p>Not your profile</p>
+            <% if current_user.following?(@user) %>
+            <button type="button" name="button">Unfollow</button>
+            <% else %>
             <button type="button" name="button">Follow</button>
+            <% end %>
           <% else %>
-            <p>Really??</p>
+            <p>Really?</p>
           <% end %>
           <%= render "components/informations_users" %>
       </div>
