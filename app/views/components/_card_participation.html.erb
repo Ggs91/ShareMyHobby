@@ -9,8 +9,10 @@
         </h5>
       <%= render "components/informations_events" %>
     </div>
-    <%= link_to "Cancel Event", event_path(@event), method: :delete, data: { :confirm => 'Are you sure?' }, class: "btn btn-danger" %>
-    <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-info" %>
+    <% if @event.is_still_ongoing? %>
+      <%= link_to "Cancel Event", event_path(@event), method: :delete, data: { :confirm => 'Are you sure?' }, class: "btn btn-danger" %>
+      <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-info" %>
+    <% end %>
     </div>
   </div>
 </div>

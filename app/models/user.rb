@@ -17,6 +17,23 @@ class User < ApplicationRecord
   has_many :liked_events, through: :likes, source: :event, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_one_attached :profile_picture, dependent: :destroy
+
+  # A user can or can't have followers. We're using the Friendship table to join a follower to a user
+  # who is identify by his id
+  has_many :active_friendships, class_name: "Friendship", foreign_key: "follower_id", dependent: :destroy
+
+  #Same as the follower relation. A user can decided to follow an other user.
+  has_many :passive_friendships, class_name: "Friendship", foreign_key: "followed_id", dependent: :destroy
+
+  # using following make more sense for the users that an other one follow because the word followers
+  # is better for the users that follows an other one. We're using the active_friendships to found the user
+  # to follow/unfollow
+  has_many :following, through: :active_friendships, source: :followed
+
+  #Same as the following relation but the opposite
+  # For more clarity ze're using has_many :followers instead of :follower
+  has_many :followers, through: :passive_friendships, source: :follower
+  
   #Validations
   validates :email,
     presence: true,
@@ -29,6 +46,18 @@ class User < ApplicationRecord
 
   def age  #calculate a user age based on it's date_ob_birth attribute. Set to N/A if no date submitting
     self.date_of_birth.nil? ? "N/A" : ((Time.zone.now - self.date_of_birth.to_time) / 1.year.seconds).floor
+  end
+
+  def follow(user)
+    active_friendships.create(followed_id: user.id)
+  end
+
+  def unfollow(user)
+    active_friendships.find_by(followed_id: user.id).destroy
+  end
+
+  def following?(user)
+    following.include?(user)
   end
 
   private

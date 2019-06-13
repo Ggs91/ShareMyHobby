@@ -27,4 +27,12 @@
 			No more place available
 		<% end %>
 	</p>
+	<p>
+		<b>Status : </b>
+		<% if @event.is_still_ongoing? %>
+			<b style="color:#1CD1B7;"> On going </b>
+		<% else %>
+				<b style="color:#EB1C0F;"> Passed </b>
+		<% end %>
+	</p>
 </center>

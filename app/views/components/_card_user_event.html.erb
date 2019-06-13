@@ -25,22 +25,18 @@
         <% if @event.is_administrated_by?(current_user) %>
           <%= link_to "See event space", participations_path(id: @event.id), class: "btn btn-info" %>
         <% elsif @event.has_participant?(current_user)%>
-        <center>
-          You are part of this event !
-        </center>
+          <center>
+            You are part of this event !
+          </center>
           <%= link_to "Cancel", participation_path(id: @event.id), method: :delete, class: "btn btn-danger" %>
         <% elsif @event.has_place_available? %>
-        <%= link_to "Join in !", participations_path(id: @event.id), method: :post, class: "btn btn-info" %>
+          <%= link_to "Join in !", participations_path(id: @event.id), method: :post, class: "btn btn-info" %>
         <% end %>
       <% else %>
-      <center>
-         Wanna join this event ? <%= link_to "Sign up !", new_user_registration_path  %><br /><br />
-      </center>
+        <center>
+          Wanna join this event ? <%= link_to "Sign up !", new_user_registration_path  %>
+       </center>
       <% end %>
-    <% else %>
-      <center>
-      <b style="color:red;"> Closed </b>
-      </center>
     <% end %>
     </div>
   </div>

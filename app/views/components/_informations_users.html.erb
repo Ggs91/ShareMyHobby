@@ -4,5 +4,7 @@
 <p> Email : <%= @user.email %> </p>
 <p> Phone Number : <%= @user.phone_number %> </p>
 <p>Description : <%= @user.description %> </p>
-<a href="/users/edit" class="btn btn-info" role="button">Edit your Profil</a>
-<a href="/events/new" class="btn btn-info" role="button">Create an Event</a>
+<% if @user == current_user %>
+  <%= link_to "Edit your Profile", edit_user_registration_path, class: "btn btn-info" %>
+  <%= link_to "Create an Event", new_event_path, class: "btn btn-info" %>
+<% end %>

@@ -23,8 +23,8 @@ class Event < ApplicationRecord
     self.max_participants - self.participants.count
   end
 
-  def has_place_available? #return true if there's still place available
-    self.number_of_places_available > self.participants.count
+  def has_place_available?
+    self.number_of_places_available  > 0
   end
 
   def starting_date
@@ -44,13 +44,13 @@ class Event < ApplicationRecord
   end
 
   def is_still_ongoing?
-    DateTime.parse("#{self.start_date}") >= DateTime.now
+    DateTime.parse("#{self.start_date}") >= DateTime.now.change(offset: "+0000")
   end
 
 private
 
   def start_date_cannot_be_in_the_past
-     errors.add(:start_date, ": time and date must be present or can't be in the past") unless start_date.present? && DateTime.parse("#{start_date}") >= DateTime.now
+     errors.add(:start_date, ": time and date must be present or can't be in the past") unless start_date.present? && DateTime.parse("#{start_date}") >= DateTime.now.change(offset: "+0000")
   end
 
   def positif_multiple_of_5
