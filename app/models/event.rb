@@ -50,7 +50,7 @@ class Event < ApplicationRecord
 private
 
   def start_date_cannot_be_in_the_past
-     errors.add(:start_date, ": time and date must be present or can't be in the past") unless start_date.present? && DateTime.parse("#{start_date}") >= DateTime.now
+     errors.add(:start_date, ": time and date must be present or can't be in the past") unless start_date.present? && DateTime.parse("#{start_date}") >= DateTime.now.change(offset: "+0000")
   end
 
   def positif_multiple_of_5
