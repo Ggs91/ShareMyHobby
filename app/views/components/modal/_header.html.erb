@@ -19,6 +19,11 @@
                 <% if user_signed_in? %>
                 <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
                 <li><%= link_to('Edit registration', edit_user_registration_path) %></li>
+                
+                <li></span><%= link_to conversations_path, class: "pl-0 pr-3" do %>
+                  <span class="icon-envelope"></span>
+                <% end %></li>
+
                 <li><%= link_to('Create an event', new_event_path, class: "bg-primary text-blue rounded") %></li>
                 <% else %>
 
