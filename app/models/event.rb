@@ -23,7 +23,7 @@ class Event < ApplicationRecord
     self.max_participants - self.participants.count
   end
 
-  def has_place_available? 
+  def has_place_available?
     self.number_of_places_available  > 0
   end
 
@@ -44,7 +44,7 @@ class Event < ApplicationRecord
   end
 
   def is_still_ongoing?
-    DateTime.parse("#{self.start_date}") >= DateTime.now
+    DateTime.parse("#{self.start_date}") >= DateTime.now.change(offset: "+0000")
   end
 
 private
