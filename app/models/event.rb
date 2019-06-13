@@ -24,7 +24,7 @@ class Event < ApplicationRecord
   end
 
   def has_place_available? #return true if there's still place available
-    self.number_of_places_available - self.participants.count >= 0
+    self.number_of_places_available - self.participants.count > 0
   end
 
   def starting_date
