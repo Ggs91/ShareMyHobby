@@ -10,7 +10,8 @@
     </div>
 
     <div class="col form-group required">
-      <%= f.label :title, class: "control-label font-weight-bold" %></br>
+      <%= f.label :title, class: "control-label font-weight-bold" %><br>
+
       <%= f.text_field :title, placeholder: "Ex: Come watch me perform at comedy bar this saturday !", class: "form-control" %>
     </div>
 
@@ -52,12 +53,18 @@
         <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
         <%= f.select :department_id, options_from_collection_for_select(Department.all, :id, :name,  prompt: true), { include_blank: "Choose a department" }, { :class => 'form-control' } %>
       </div>
+    </div>
+      <div class="w-100"></div>
 
       <div class="col form-group required">
-        <%= f.label :description, class: "control-label font-weight-bold" %> :</br>
+      <%= f.label :description, class: "control-label font-weight-bold" %> :<br>
       <%= f.text_area :description, placeholder: "In few words:\n-Introduce your hobby and what you love about it\n-Describe your event proposition (live demo, workshop...)\n-Place (your place, café, park, showplace..)\n-Notes for your hosts (invit them to bring they own instrument...", rows: "5", class: "form-control" %>
       </div>
-      
+
+        <div class="col form-group">
+        <%= f.label :picture, "A picture is worth a thousand words", class: "control-label font-weight-bold" %><br>
+        <%= f.file_field :picture %>
+
     </div><br />
   </div>
 <div class="text-center">
