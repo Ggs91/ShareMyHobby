@@ -4,12 +4,35 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut <%= @user.first_name %> t'es bien enregistré pour cet event!</h1>
-    <p>
-      Mettre les infos de l'event Participation
-    </p>
-    <p>
-      À très vite sur ShareMyHobby : <%= @url %> !
-    </p>
+    <div class="container">
+      <h1>Salut <%= @user.first_name %> t'es bien enregistré(e) pour cet <%= @event.title %>!</h1>
+      <p>
+        <% if @event.picture.attached? %>
+          <%= image_tag(@event.picture, alt: 'Image', class: "img-fluid",  width: 400) %>
+        <% end %>
+      </p>
+      <p>
+        <%= @event.description %>
+      </p>
+      <h3>Adresse :</h3>
+      <p>
+        <%= @event.location .capitalize%>
+      </p>
+      <h3>Date :</h3>
+      <p>
+        <%= @event.start_date %>
+      </p>
+      <h3>Durée :</h3>
+      <p>
+        <% if @event.duration < 60 %>
+          <%= @event.duration %> min
+        <% else %>
+        <%= @event.duration / 60 %> heure(s) <%= @event.duration % 60 %> min
+        <% end %>
+      </p>
+      <p>
+        <li>À très vite sur ShareMyHobby <%= link_to "ShareMyHobby", @url %></li>
+      </p>
+    </div>
   </body>
 </html>

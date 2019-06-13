@@ -17,8 +17,8 @@ class UserMailer < ApplicationMailer
     @user = @participation.user
     @event = @participation.event
 
-    @url  = "https://share-my-hobby-production.herokuapp.com/"
-    mail(to: @user.email, subject: "You'registration is confirm to #{@event.description}")
+    @url  = root_url
+    mail(to: @user.email, subject: "You'registration is confirm to #{@event.title}")
   end
 
 end
