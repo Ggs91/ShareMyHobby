@@ -43,6 +43,10 @@ class Event < ApplicationRecord
     self.administrator.first_name + " " + self.administrator.last_name
   end
 
+  def is_still_ongoing?
+    DateTime.parse("#{self.start_date}") >= DateTime.now
+  end
+
 private
 
   def start_date_cannot_be_in_the_past
