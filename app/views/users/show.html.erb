@@ -26,11 +26,10 @@
       <div class="col-md-5 ml-auto">
         <h2 class="text-primary mb-3">
           <% if user_signed_in? && @user != current_user %>
-            <p>Not your profile</p>
             <% if current_user.following?(@user) %>
-            <button type="button" name="button">Unfollow</button>
+              <%= button_to "Unfollow", friendship_path(user_id: @user.id) , method: :delete, :class =>"btn btn-lg btn-primary btn-danger col-3" %>
             <% else %>
-            <button type="button" name="button">Follow</button>
+              <%= button_to "Follow", friendships_path(user_id: @user.id), :class =>"btn btn-lg btn-primary btn-block col-3" %>
             <% end %>
           <% else %>
             <p>Really?</p>
