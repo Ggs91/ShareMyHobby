@@ -3,7 +3,12 @@
     <div class="listing-item">
 
         <div class="listing-image">
-           <%= image_tag("img_1.jpg", alt: "Image", class: "img-fluid")%>
+          <% if event.picture.attached? %>
+          <%= image_tag(event.picture, alt: 'Image', class: "img-fluid",  width: 730) %>
+          <% else %>
+          <%= image_tag("img_1.jpg", alt: "Image", class: "img-fluid")%>
+          <% end %>
+
         </div>
 
         <div class="listing-item-content">
