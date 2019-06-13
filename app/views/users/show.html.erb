@@ -33,7 +33,16 @@
             <% end %>
           <% else %>
             <p>Really?</p>
-          <% end %>
+          <% end %><br>
+          <div class="">
+            <% if user_signed_in? && @user != current_user %>
+              <%= link_to "Send a message to #{@user.email}", conversations_path(sender_id: current_user.id, recipient_id: @user), method: 'post', class:"button is-link" %>
+            <% elsif user_signed_in? && @user != current_user %>
+              <%= link_to "Conversations", conversations_path %>
+            <% else %>
+              <%= link_to "Sign up to message #{@user.email}", new_user_registration_path %>
+            <% end %>
+          </div><br>
           <%= render "components/informations_users" %>
       </div>
       </div>
@@ -41,6 +50,11 @@
     <br />
     <br />
     <br />
+
+    <div class="container">
+
+    </div><br>
+
     <div class="container">
       <div class="row align-items-start">
         <div class="col">
