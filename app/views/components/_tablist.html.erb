@@ -14,27 +14,37 @@
     <% @event.participants.each do |participant| %>
     <br>
     <div class="card" style="width: 20rem;">
-       <% if participant.profile_picture.attached? %>
-    <%= image_tag(participant.profile_picture, alt: 'profile picture') %>
-<% end %>
+      <% if participant.profile_picture.attached? %>
+      <%= image_tag(participant.profile_picture, alt: 'profile picture') %>
+      <% end %>
       <div class="card-body">
         <h5 class="card-title">
           <%= participant.last_name %>
           <%= participant.first_name %>
         </h5>
         <p class="card-text">
-          <p> Age : <%= participant.age %></p>
-          <p> City : <%= participant.department.name %> </p>
-          <p> Email : <%= participant.email %></p>
+          <p>
+             Age : 
+            <%= participant.age %>
+          </p>
+          <p>
+             City : 
+            <%= participant.department.name %>
+          </p>
+          <p>
+             Email : 
+            <%= participant.email %>
+          </p>
         </p>
-        <a class="btn btn-primary" <%= link_to  "Profile" , user_path(participant.id) %></a>
-      </div>
+        <a class="btn btn-primary" 
+        <%= link_to  "Profile" , user_path(participant.id) %>
+      </a>
     </div>
-    <% end %>
   </div>
-  <div id="comments" class="container tab-pane fade">
-    <br>
-    <%= render "components/comments" %>
-  </div>
+  <% end %>
 </div>
-
+<div id="comments" class="container tab-pane fade">
+  <br>
+  <%= render "components/comments" %>
+</div>
+</div>

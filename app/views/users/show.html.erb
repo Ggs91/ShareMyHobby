@@ -25,9 +25,16 @@
       </div>
       <div class="col-md-5 ml-auto">
         <h2 class="text-primary mb-3">
-        <% if current_user == @user %>
+          <% if user_signed_in? && @user != current_user %>
+            <% if current_user.following?(@user) %>
+              <%= button_to "Unfollow", friendship_path(user_id: @user.id) , method: :delete, :class =>"btn btn-lg btn-primary rounded btn-danger col-3" %>
+            <% else %>
+              <%= button_to "Follow", friendships_path(user_id: @user.id), :class =>"btn btn-lg btn-primary rounded btn-block col-3" %>
+            <% end %>
+          <% else %>
+            <p>Really?</p>
+          <% end %>
           <%= render "components/informations_users" %>
-        <% end %>
       </div>
       </div>
     </div>
@@ -42,7 +49,7 @@
               <h2 class="font-weight-light text-primary pb-3">Attended Events</h2>
             </div>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam voluptates a explicabo delectus sed labore dolor enim optio odio at!
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam voluptates a explicabo delectus sed labore dolor enim optio odio at !
             </p>
           </div>
         </div>

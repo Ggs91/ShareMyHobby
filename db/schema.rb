@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_08_145537) do
+ActiveRecord::Schema.define(version: 2019_06_13_082459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,25 @@ ActiveRecord::Schema.define(version: 2019_06_08_145537) do
     t.index ["department_id"], name: "index_events_on_department_id"
   end
 
+  create_table "friendships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_friendships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_friendships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_friendships_on_follower_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_likes_on_event_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "participations", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "event_id"
@@ -108,6 +127,8 @@ ActiveRecord::Schema.define(version: 2019_06_08_145537) do
   add_foreign_key "comments", "users"
   add_foreign_key "events", "categories"
   add_foreign_key "events", "departments"
+  add_foreign_key "likes", "events"
+  add_foreign_key "likes", "users"
   add_foreign_key "participations", "events"
   add_foreign_key "participations", "users"
 end

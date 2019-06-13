@@ -1,0 +1,17 @@
+<center>
+  <div class="mb-5">
+    <div class="card border-primary mb-3" style="width: 20rem;">
+       <div class="card-header">
+       <b>Your event details</b>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">
+        </h5>
+      <%= render "components/informations_events" %>
+    </div>
+    <%= link_to "Cancel Event", event_path(@event), method: :delete, data: { :confirm => 'Are you sure?' }, class: "btn btn-danger" %>
+    <%= link_to "Edit Event", edit_event_path(@event), class: "btn btn-info" %>
+    </div>
+  </div>
+</div>
+</center>

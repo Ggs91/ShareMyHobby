@@ -5,7 +5,11 @@ class Event < ApplicationRecord
   belongs_to :administrator, class_name: "User"
   has_many :participations, dependent: :destroy
   has_many :participants, through: :participations, source: :user, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liking_users, through: :likes, source: :user, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_one_attached :picture, dependent: :destroy
+
   #Validations
   validate :start_date_cannot_be_in_the_past
   validate :positif_multiple_of_5
@@ -37,6 +41,10 @@ class Event < ApplicationRecord
 
   def administrator_full_name
     self.administrator.first_name + " " + self.administrator.last_name
+  end
+
+  def is_still_ongoing?
+    DateTime.parse("#{self.start_date}") >= DateTime.now
   end
 
 private
