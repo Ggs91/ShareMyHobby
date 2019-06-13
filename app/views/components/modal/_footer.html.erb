@@ -1,15 +1,10 @@
     <footer class="site-footer">
       <div class="container">
         <div class="row">
-          <div class="col-md-11">
+          <div class="col-md-12">
             <div class="row">
-              <div class="col-md-3">
-                <h2 class="footer-heading mb-4">About</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident rerum unde possimus molestias dolorem fuga, illo quis fugiat!</p>
-              </div>
-              
-              <div class="col-md-3">
-                <h2 class="footer-heading mb-4">Your account</h2>
+              <div class="col-md-3 offset-2">
+                <h2 class="footer-heading mb-3">Your account</h2>
                 <% if user_signed_in? %>
                 <ul class="list-unstyled"><li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
                 <li><%= link_to('Edit registration', edit_user_registration_path) %></li>
@@ -24,20 +19,27 @@
               </div>
 
               <div class="col-md-3">
-                <h2 class="footer-heading mb-4">Share My Hobby</h2>
+                <h2 class="footer-heading mb-3">Share My Hobby</h2>
                 <ul class="list-unstyled">
                   <li><%= link_to "About", about_path %></li>
-                  <li><a href="#">Testimonials</a></li>
                   <li><%= link_to "Contact", contact_path %> </li>
                 </ul>
               </div>
 
               <div class="col-md-3">
-                <h2 class="footer-heading mb-4">Follow Us</h2>
-                <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                <h2 class="footer-heading mb-3">Follow Us</h2>
+                <% link_to root_path, class: "pl-0 pr-3" %></span><%= link_to root_path,  class: "pl-0 pr-3" do %>
+                  <span class="icon-facebook"></span>
+                <% end %>
+                <% link_to root_path, class: "pl-0 pr-3" %></span><%= link_to root_path,  class: "pl-0 pr-3" do %>
+                  <span class="icon-twitter"></span>
+                <% end %>
+                <% link_to root_path, class: "pl-0 pr-3" %></span><%= link_to root_path,  class: "pl-0 pr-3" do %>
+                  <span class="icon-instagram"></span>
+                <% end %>
+                <% link_to root_path, class: "pl-0 pr-3" %></span><%= link_to root_path,  class: "pl-2 pr-3" do %>
+                  <span class="icon-linkedin"></span>
+                <% end %>
               </div>
             </div>
           </div>
@@ -48,7 +50,7 @@
             <div class="border-top pt-5">
             <p>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | ShareMyHobby</a>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </p>
             </div>
