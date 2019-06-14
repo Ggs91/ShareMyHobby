@@ -43,6 +43,8 @@ class User < ApplicationRecord
   validates :department, presence: {:message => ": Please choose a department" }
   validates :first_name, presence: true
   validates :last_name, presence: true
+  validate :profile_picture_limit_check
+
 
   def age  #calculate a user age based on it's date_ob_birth attribute. Set to N/A if no date submitting
     self.date_of_birth.nil? ? "N/A" : ((Time.zone.now - self.date_of_birth.to_time) / 1.year.seconds).floor
@@ -65,6 +67,15 @@ class User < ApplicationRecord
   def default_values   # set default values for fields left blank when submitting
     self.phone_number = "N/A" if self.phone_number.blank?
     self.description = "No description available" if self.description.blank?
+  end
+
+  def profile_picture_limit_check
+    if profile_picture.attached?
+      if profile_picture.blob.byte_size > 2000000
+        profile_picture.purge
+        errors[:base] << "The picture should be smaller than 2Mo"
+      end
+    end
   end
 
   def welcome_send

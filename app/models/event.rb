@@ -18,6 +18,8 @@ class Event < ApplicationRecord
   validates :description, presence: true, length: { in: 5..1000 }
   validates :location, presence: true
   validates :department, presence: {:message => "must be selected" }
+  validate :event_picture_limit_check
+
 
   def number_of_places_available
     self.max_participants - self.participants.count
@@ -56,4 +58,14 @@ private
   def positif_multiple_of_5
     errors.add(:duration, "must be a multiple of 5") unless duration.present? && duration > 0 && duration % 5 == 0
   end
+
+  def event_picture_limit_check
+    if picture.attached?
+      if picture.blob.byte_size > 2000000
+        picture.purge
+        errors[:base] << "The picture should be smaller than 2Mo"
+      end
+    end
+  end
+  
 end
