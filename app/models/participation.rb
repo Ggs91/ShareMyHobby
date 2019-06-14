@@ -8,7 +8,7 @@ class Participation < ApplicationRecord
   belongs_to :event
 
   #Callbacks
-  #after_create :user_participation_mail_send
+  after_create :user_participation_mail_send
   after_create :admin_registration_send
 
 

@@ -4,18 +4,25 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Salut <%= @admin.first_name %>, <%= @user.first_name %> s'est inscrit(e) à ton event !</h1>
-    <p>
-      <%= @user.email %> c'est le user mail et le nom de l'user   <%= @user.first_name %>
-    </p>
-    <p>
-      <%= @admin.email %> c'est l'admin et ca c'est le nom <%= @admin.first_name %>
-    </p>
-    <p>
-      Chez ShareMyHobby tu pourras partager ta passion avec les autres utilisateurs et proposer des évènements pour faire découvrir celle-ci
-    </p>
-    <p>
-      À très vite sur ShareMyHobby : <%= @url %> !
-    </p>
+    <div class="container">
+      <h1> <%= @user.first_name.capitalize %> s'est inscrit(e) à : <%= @event.title %> </h1>
+      <div class="row">
+        <h3>
+          Voici ses infos :
+        </h3>
+        <p>
+          <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
+        </p>
+        <p>
+          <%= @user.email %>
+        </p>
+        <p>
+          <%= @user.department.name %>
+        </p>
+        <p>
+          À très vite sur <%= link_to "ShareMyHobby", @url %>
+        </p>
+      </div>
+    </div>
   </body>
 </html>

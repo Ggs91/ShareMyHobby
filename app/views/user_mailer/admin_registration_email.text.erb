@@ -1,1 +1,12 @@
-test seulement pour l'instant
+<%= @user.first_name.capitalize %> s'est inscrit(e) à : <%= @event.title %>
+======================================
+
+Voici ses infos :
+
+<%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
+
+<%= @user.email %>
+
+<%= @user.department.name %>
+
+À très vite sur ShareMyHobby : <%= @url %>

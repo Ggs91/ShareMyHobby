@@ -1,6 +1,5 @@
-<%= @user.first_name %> <%= @user.last_name %> </h2>
-<p>City : <%= @user.department.name %> </p>
-<p><b class="control-label font-weight-bold">TRUC</b> : <%= @user.department.name %></p>
+<%= @user.first_name.capitalize %> <%= @user.last_name %> </h2>
+<p><b class="control-label font-weight-bold">City</b> : <%= @user.department.name %></p>
 <p class="control-label font-weight-bold">
   <% if user_signed_in? && @user != current_user %>
     <%= link_to "Send a message to #{@user.first_name}", conversations_path(sender_id: current_user.id, recipient_id: @user), method: 'post', class:"button is-link" %>
