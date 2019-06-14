@@ -33,7 +33,7 @@ class User < ApplicationRecord
   #Same as the following relation but the opposite
   # For more clarity ze're using has_many :followers instead of :follower
   has_many :followers, through: :passive_friendships, source: :follower
-  
+
   #Validations
   validates :email,
     presence: true,
@@ -60,7 +60,7 @@ class User < ApplicationRecord
     following.include?(user)
   end
 
-  private
+private
 
   def default_values   # set default values for fields left blank when submitting
     self.phone_number = "N/A" if self.phone_number.blank?
@@ -70,5 +70,4 @@ class User < ApplicationRecord
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
-
 end
