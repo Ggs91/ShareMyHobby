@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'categories/show'
   root 'events#index'
   resources :events, except: [:index] do
     resources :comments, only: [:create]
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   resources :friendships, only: [:create, :destroy]
   resources :conversations do
     resources :messages
+  resources :categories, only: [:show] 
   end
 
   get 'contact', to: 'static_pages#contact'
