@@ -33,7 +33,7 @@ class User < ApplicationRecord
   #Same as the following relation but the opposite
   # For more clarity ze're using has_many :followers instead of :follower
   has_many :followers, through: :passive_friendships, source: :follower
-  
+
   #Validations
   validates :email,
     presence: true,
