@@ -6,7 +6,7 @@
           <%= devise_error_messages! %>
 
         <% if @user.profile_picture.attached? %>
-          <%= image_tag(@user.profile_picture, alt: 'profile picture', width: 200) %>
+        <%= image_tag @user.profile_picture.variant(combine_options: {resize: '256x256^', extent: '256x256', gravity: 'Center'}) ,alt: 'User profile picture', class: "img-fluid rounded" %>
         <% end %>
         <h2> Edit your profile informations </h2> <br>
         </div>

@@ -26,6 +26,9 @@ class Event < ApplicationRecord
   scope :in_department, -> (department) {where(department_id: department)}
   scope :in_categories, -> (categories) {where(category_id: categories)}
 
+  #Pagination
+  self.per_page = 6
+
   def number_of_places_available
     self.max_participants - self.participants.count
   end
