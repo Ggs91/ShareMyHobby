@@ -7,11 +7,6 @@
     <div class="container">
       <h1>Salut <%= @user.first_name %> t'es bien enregistré pour cet <%= @event.title %>!</h1>
       <p>
-        <% if @event.picture.attached? %>
-          <%= image_tag(@event.picture, alt: 'Image', class: "img-fluid",  width: 400) %>
-        <% end %>
-      </p>
-      <p>
         <%= @event.description %>
       </p>
       <h3>Adresse :</h3>
