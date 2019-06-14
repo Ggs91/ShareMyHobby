@@ -19,10 +19,10 @@ class Event < ApplicationRecord
   validates :location, presence: true
   validates :department, presence: {:message => "must be selected" }
   validate :event_picture_limit_check
-  
+
   #Scopes
   scope :ten_most_recent, -> { order(created_at: :desc).limit(10) }
-  scope :three_random_selection, -> { reorder("RANDOM()").limit(3) }
+  scope :five_random_selection, -> { reorder("RANDOM()").limit(5) }
   scope :in_department, -> (department) {where(department_id: department)}
   scope :in_categories, -> (categories) {where(category_id: categories)}
 
