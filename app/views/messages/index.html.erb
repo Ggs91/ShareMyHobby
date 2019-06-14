@@ -9,7 +9,7 @@
                 <div class="conversation_recipient_user_infos text-center">
                   <h1>
                     <% if @conversation.recipient.profile_picture.attached? %>
-                      <%= image_tag( @conversation.recipient.profile_picture, alt: 'profile picture', width: 50, class:"message_user_pofile_picture") %>
+                    <%= image_tag @conversation.recipient.profile_picture.variant(combine_options: {resize: '75x75^', extent: '75x75', gravity: 'Center'}), alt: 'User profile picture', class:"message_user_pofile_picture" %>
                     <% end %>
                     Chat avec <%= @conversation.recipient.first_name.capitalize %></h1>
                 </div>
@@ -26,7 +26,7 @@
                       <div class="recipient_card_body">
                         <div class="recipient_msg">
                           <% if @conversation.recipient.profile_picture.attached? %>
-                            <%= image_tag( @conversation.recipient.profile_picture, alt: 'profile picture', width: 50, class:"message_user_pofile_picture") %>
+                            <%= image_tag @conversation.recipient.profile_picture.variant(combine_options: {resize: '50x50^', extent: '50x50', gravity: 'Center'}), alt: 'User profile picture', class:"message_user_pofile_picture" %>
                           <% end %>
                           <%= message.body %>
                           <span class="recipient_msg_time"><%= message.message_time %></span>
@@ -39,7 +39,7 @@
                           <span class="msg_time_send"><%= message.message_time %>
                           </span>
                           <% if @conversation.sender.profile_picture.attached? %>
-                            <%= image_tag( @conversation.sender.profile_picture, alt: 'profile picture', width: 50, class:"message_user_pofile_picture") %>
+                            <%= image_tag @conversation.sender.profile_picture.variant(combine_options: {resize: '50x50^', extent: '50x50', gravity: 'Center'}), alt: 'User profile picture', class:"message_user_pofile_picture" %>
                           <% end %>
                         </div>
                       </div>
