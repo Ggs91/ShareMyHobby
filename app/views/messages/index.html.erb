@@ -1,43 +1,71 @@
-<div class="site-section bg-light">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-7 mb-5 mt-5" data-aos="fade">
-        <div class="container">
-          <h1>
-            Message
-            <%= @conversation.recipient.email %>
-          </h1>
-          <% if @over_ten %>
-          <%= link_to "Show previous messages", '?m=all', class:'button is-link' %>
-          <% end %>
-          <div class="messages">
-            <% @messages.each do |message| %>
-            <% if message.body %>
-            <% user = User.find(message.user_id) %>
-            <div class="unique_message">
-              <div class="message_info">
-                <strong><%= user.email %></strong>
-                <%= message.message_time %>
+<div class="site-section">
+  <% if user_signed_in? %>
+    <div class="container">
+      <div class="container justify-content-center">
+        <div class="col-md-12 mb-5 mt-5" data-aos="fade">
+          <div class="conversation_card">
+            <div class="conversation_card_header">
+              <div class="conversation_card_body">
+                <div class="conversation_recipient_user_infos text-center">
+                  <h1>
+                    <% if @conversation.recipient.profile_picture.attached? %>
+                      <%= image_tag( @conversation.recipient.profile_picture, alt: 'profile picture', width: 50, class:"message_user_pofile_picture") %>
+                    <% end %>
+                    Chat avec <%= @conversation.recipient.first_name.capitalize %></h1>
+                </div>
               </div>
-              <div class="message_body">
-                <%= message.body %>
-              </div>
+            </div><br>
+            <% if @over_ten %>
+              <%= link_to "Show previous messages", '?m=all', class:'button is-link' %>
+            <% end %>
+            <div class="messages">
+              <% @messages.each do |message| %>
+                <div class="recipient_card_header">
+                  <% if message.body %>
+                    <% if @conversation.recipient == User.find(message.user_id) %>
+                      <div class="recipient_card_body">
+                        <div class="recipient_msg">
+                          <% if @conversation.recipient.profile_picture.attached? %>
+                            <%= image_tag( @conversation.recipient.profile_picture, alt: 'profile picture', width: 50, class:"message_user_pofile_picture") %>
+                          <% end %>
+                          <%= message.body %>
+                          <span class="recipient_msg_time"><%= message.message_time %></span>
+                        </div>
+                      </div>
+                    <% else %>
+                      <div class="d-flex justify-content-end mb-3">
+                        <div class="msg_cotainer_send">
+                          <%= message.body %>
+                          <span class="msg_time_send"><%= message.message_time %>
+                          </span>
+                          <% if @conversation.sender.profile_picture.attached? %>
+                            <%= image_tag( @conversation.sender.profile_picture, alt: 'profile picture', width: 50, class:"message_user_pofile_picture") %>
+                          <% end %>
+                        </div>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div><br>
+            <div class="conversation_card_footer">
+              <%= form_for [@conversation, @message] do |f| %>
+                <div class="input-group">
+                  <%= f.text_area :body, class: "form-control type_msg", placeholder: "Whatever you say say nothing..." %>
+                  <%= f.text_field :user_id, value: current_user.id, type: "hidden", class: "form-control" %>
+                  <div class="input-group-append">
+                    <%= f.submit "message", class: "btn btn-lg btn-primary " %>
+                  </div>
+                </div>
+              <% end %>
             </div>
-            <% end %>
-            <% end %>
           </div>
-          <br>
-          <%= form_for [@conversation, @message] do |f| %>
-          <div class="form-group">
-            <%= f.text_area :body, class: "textarea col-9", placeholder: "Whatever you say say nothing..." %>
-            <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
-          </div>
-          <div class="form-group">
-            <%= f.submit "message", class: "btn btn-lg btn-primary " %>
-          </div>
-          <% end %>
         </div>
       </div>
     </div>
-  </div>
+  <% else %>
+    <div class="text-center">
+      <%= link_to "Login", new_user_session_url %>
+    </div>
+  <% end %>
 </div>
