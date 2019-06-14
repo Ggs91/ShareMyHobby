@@ -22,7 +22,7 @@ User model: to register, login, logout, and update your profile.
 
 Event model: to  create, modify, delete et and join an event
 
-Category model: possibilité de filtrer sa recherche
+Category model: to look for a more precise type of event
 
 Follow model: allows you to follow other users and start to chat with them
 
