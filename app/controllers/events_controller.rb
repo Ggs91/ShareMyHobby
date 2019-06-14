@@ -1,10 +1,12 @@
 class EventsController < ApplicationController
+	include EventsHelper
 	before_action :authenticate_user!, except: [:index, :show]
 	before_action :set_event, only: [:show, :edit, :update, :destroy]
 	before_action :restrict_access_to_administrator, only: [:edit, :update, :destroy]
 
 	def index
 		@events = Event.all.order("created_at DESC")
+		@hand_selected_events = Event.in_categories(current_user_3_best_categories_of_interest).in_department(current_user.department).ten_most_recent.three_random_selection if user_signed_in?
 		@categories = Category.all
 	end
 
