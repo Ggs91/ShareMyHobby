@@ -71,3 +71,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "aws-sdk-s3", require: false
 gem "letter_opener"
 gem 'mailjet'
+gem 'will_paginate-bootstrap'
