@@ -14,8 +14,9 @@
             <div class="profile-userpic">
               <%= image_tag(@event.administrator.profile_picture, height: '190', width: '190', alt: "profile_picture" ) %>
             </div>
+            <% else %>
+              <img src="/assets/user_default.png" alt="" class="img-responsove border-raduis-3">
           </center>
-          <% else %>
           <% end %>
         </h5>
       <%= render "components/informations_events" %>
