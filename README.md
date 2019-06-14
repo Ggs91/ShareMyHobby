@@ -30,6 +30,12 @@ The app also has a message board system and you can leave a comment on every eve
 
 Every user has a Dashboard which dislpays the events the user created with their current status (past/future event).
 
+## Special features:
+
+Private conversations as soon as 2 users follow each other.
+
+Algorithme that display on the home page a sample of the latest events that the current user might be interested in. It selects the latest events in the current user department/area that have the same categories as the most liked ones by the user.   
+
 ## Authors
 * **Émilie Douvier** - https://github.com/Emilie-D
 * **Bano Traoré** - https://github.com/banotraore
