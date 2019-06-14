@@ -62,7 +62,7 @@ class User < ApplicationRecord
     following.include?(user)
   end
 
-  private
+private
 
   def default_values   # set default values for fields left blank when submitting
     self.phone_number = "N/A" if self.phone_number.blank?
@@ -81,5 +81,4 @@ class User < ApplicationRecord
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
-
 end
