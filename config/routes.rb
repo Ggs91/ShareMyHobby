@@ -14,9 +14,10 @@ Rails.application.routes.draw do
   resources :participations, only: [:index, :create, :destroy]
   resources :likes, only: [:create, :destroy]
   resources :friendships, only: [:create, :destroy]
+  resources :categories, only: [:show]
   resources :conversations do
     resources :messages
-  resources :categories, only: [:show] 
+   
   end
 
   get 'contact', to: 'static_pages#contact'
