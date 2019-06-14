@@ -1,8 +1,15 @@
 <%= @user.first_name %> <%= @user.last_name %> </h2>
-<p>Age : <%= @user.age %> </p>
 <p>City : <%= @user.department.name %> </p>
-<p> Email : <%= @user.email %> </p>
-<p> Phone Number : <%= @user.phone_number %> </p>
+<p><b class="control-label font-weight-bold">TRUC</b> : <%= @user.department.name %></p>
+<p class="control-label font-weight-bold">
+  <% if user_signed_in? && @user != current_user %>
+    <%= link_to "Send a message to #{@user.first_name}", conversations_path(sender_id: current_user.id, recipient_id: @user), method: 'post', class:"button is-link" %>
+  <% elsif user_signed_in? && @user != current_user %>
+    <%= link_to "Conversations", conversations_path %>
+  <% else %>
+    <%= link_to "Sign up to send a to message #{@user.first_name}", new_user_registration_path %>
+  <% end %>
+</p>
 <p>Description : <%= @user.description %> </p>
 <% if @user == current_user %>
   <%= link_to "Edit your Profile", edit_user_registration_path, class: "btn btn-info" %>
