@@ -21,4 +21,15 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "You'registration is confirm to #{@event.description}")
   end
 
+  def admin_registration_email(registration)
+    @registration = registration
+    @user = @registration.user
+    @event = @registration.event
+     @admin = @event.administrator
+    # @event = @registration.event
+
+    @url = "https://share-my-hobby-production.herokuapp.com/"
+    mail(to: @admin.email, subject: "New registration")
+  end
+
 end
