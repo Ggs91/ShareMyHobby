@@ -1,2 +1,31 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<div class="site-section bg-light">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-11 mb-3 mt-5" data-aos="fade">
+
+        <div class="row">
+          <div class="col-4 border-primary "><h2 class="font-weight-light text-primary display-2">Plenty of events to choose from</h2>
+
+            <p>Share Your Hobby & Meet new Fellows that Share the same Passion !</p>
+
+          <div class="text-center">
+            <%= link_to "See more events!", categories_path, class: "btn-primary btn-lg round" %>
+          </div>
+
+          </div>
+
+          <div class='col-7'>
+          	<h2 class="font-weight-light text-primary display-4 "><%= @category.name %></h2>
+           <div class="container">
+        <div class="pagination">
+          <div class="row">
+            <%= render 'components/event_card' %>
+          </div>
+          </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
