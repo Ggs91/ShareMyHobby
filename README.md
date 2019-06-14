@@ -1,9 +1,7 @@
 ### Prod Website 
 https://share-my-hobby-production.herokuapp.com/
 
-# Project Title
-
-ShareMyHobby
+# ShareMyHobby
 
 ### OUR APP CONCEPT :
 
