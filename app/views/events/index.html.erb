@@ -2,45 +2,36 @@
 <div class="site-section bg-light">
   <div class="container">
     <%= render 'components/categories' %>
-      <div class="site-section" data-aos="fade">
-        <div class="container">
-           <div class="row align-items-center">
-               <div class="col-5 border-primary ">
-                    <h2 class="font-weight-light text-primary display-1">Better together</h2>
-
-                    <p>ShareMyHobby is a platform for finding and building local communities. People use ShareMyHobby learn new things, meet new people, challenge themselves, and pursue their passions, together.</p>
-
-                  </div>
-                <div class="col-6 img-fluidfloat-right w-10">
-                <%= image_tag "front-image.jpg" %>
-               </div>
+    <div class="site-section" data-aos="fade">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-5 border-primary ">
+            <h2 class="font-weight-light text-primary display-1">Better together</h2>
+            <p>
+              ShareMyHobby is a platform for finding and building local communities. People use ShareMyHobby learn new things, meet new people, challenge themselves, and pursue their passions, together.
+            </p>
           </div>
+          <div class="col-6 img-fluidfloat-right w-10">
+            <%= image_tag "front-image.jpg" %>
+          </div>
+        </div>
+        <%= render 'components/card_interest_you' %>
 
         <div class="row justify-content-center mb-4 align-items-center">
-          <div class="col-md-7 text-center border-primary"><br><br>
+          <div class="col-md-7 text-center border-primary">
+            <br>
+            <br>
             <h2 class="font-weight-light text-primary">Latest Events</h2>
             <p class="color-black-opacity-5">
-            Join the latest events around!
+              Join the latest events around!
             </p>
           </div>
         </div>
-
-        <% if user_signed_in? %>
-          <% @hand_selected_events.each do |selected_event| %>
-            <% if selected_event.is_still_ongoing? %>
-            <ul>
-              <li> <%= selected_event.title %></li>
-              <li> <%= selected_event.starting_date %></li>
-            </ul>
-            <% end %>
-          <% end %>
-        <% end %>
-
         <div class="container">
-        <div class="row">
-          <%= render 'components/event_card' %>
+          <div class="row">
+            <%= render 'components/event_card' %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>

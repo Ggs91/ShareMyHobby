@@ -3,16 +3,8 @@
     <div class="row justify-content-center">
       <div class="col-md-7 mb-5 mt-5" data-aos="fade">
         <div class="columns">
-          <div class="column is-3">
-            <h3 class="title is-3">All Users to message</h3>
-            <% @users.each do |user| %>
-              <% if user.id != current_user.id %>
-                <li><%= link_to "Message #{user.email}", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post" %></li>
-              <% end %>
-            <% end %>
-          </div>
           <div class="column is-7">
-            <h3 class="title is-3">Active Conversations</h3>
+            <h3 class="title is-3">Conversation(s) en cours</h3>
             <% @conversations.each do |conversation| %>
               <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
                 <% if conversation.sender_id == current_user.id %>
@@ -23,7 +15,7 @@
                       <div class="columns">
                         <div class="column">
                           <div class="inline-block">
-                            <%= link_to recipient.email, conversation_messages_path(conversation) %>
+                            <%= link_to recipient.first_name, conversation_messages_path(conversation) %>
                           </div>
                         </div>
                       </div>

@@ -1,0 +1,39 @@
+<% if user_signed_in? && !@hand_selected_events.empty? %>
+<div class="row justify-content-center mb-4 align-items-center">
+  <div class="col-md-7 text-center border-primary">
+    <br>
+    <br>
+    <h2 class="font-weight-light text-primary">Latest events that might interest you</h2>
+      <p class="color-black-opacity-5"></p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12  block-13">
+    <div class="owl-carousel nonloop-block-13">
+      <% @hand_selected_events.each do |selected_event| %>
+      <div class="d-block d-md-flex listing vertical">
+        <%= link_to event_path(selected_event) do %>
+             <%= image_tag '/assets/img_1.jpg', class: "img d-block" %>
+         <% end %>
+        <div class="lh-content">
+          <% if selected_event.is_still_ongoing? %>
+          <span class="category"><%= selected_event.category.name %></span>
+          <% if liked?(selected_event) %>
+            <%= link_to like_path(id: selected_event, like_id: liked?(selected_event)), class: "bookmark", method: :delete do %>
+            <span class="icon-heart" style ="color:red;"></span>
+            <% end %>
+          <% else %>
+            <%= link_to likes_path(id: selected_event.id), class: "bookmark", method: :post do %>
+            <span class="icon-heart"></span>
+            <% end %>
+          <% end %>
+          <h3><%= selected_event.title %></h3>
+          <h3><%= selected_event.starting_date %></h3>
+          <% end %>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
