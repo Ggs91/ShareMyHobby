@@ -5,9 +5,11 @@ class EventsController < ApplicationController
 	before_action :restrict_access_to_administrator, only: [:edit, :update, :destroy]
 
 	def index
-		@events = Event.all.order("created_at DESC")
+		@events = Event.page(params[:page]).order('created_at DESC')
 		@hand_selected_events = Event.in_categories(current_user_3_best_categories_of_interest).in_department(current_user.department).ten_most_recent.five_random_selection if user_signed_in?
 		@categories = Category.all
+
+
 	end
 
 	def new
