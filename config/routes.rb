@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'categories/show'
   root 'events#index'
   resources :events, except: [:index] do
     resources :comments, only: [:create]
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
   resources :participations, only: [:index, :create, :destroy]
   resources :likes, only: [:create, :destroy]
   resources :friendships, only: [:create, :destroy]
-  resources :categories, only: [:show]
+  resources :categories, only: [:show, :index] 
   resources :conversations do
     resources :messages
    
