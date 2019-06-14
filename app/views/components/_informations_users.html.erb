@@ -1,15 +1,24 @@
 <%= @user.first_name.capitalize %> <%= @user.last_name %> </h2>
-<p><b class="control-label font-weight-bold">City</b> : <%= @user.department.name %></p>
+
+<% if user_signed_in? && @user != current_user && current_user.following?(@user) && @user.following?(current_user) %>
+  <div class="">
+    <p><b class="control-label font-weight-bold">Age</b> : <%= @user.age %></p>
+    <p><b class="control-label font-weight-bold">Email</b> : <%= @user.email %></p>
+    <p><b class="control-label font-weight-bold">Phone</b> : <%= @user.phone_number %></p>
+    <p><b class="control-label font-weight-bold">City</b> : <%= @user.department.name %></p>
+  </div>
+<% else %>
+  <p><b class="control-label font-weight-bold">City</b> : <%= @user.department.name %></p>
+<% end %>
 <p class="control-label font-weight-bold">
   <% if user_signed_in? && @user != current_user %>
     <%= link_to "Send a message to #{@user.first_name}", conversations_path(sender_id: current_user.id, recipient_id: @user), method: 'post', class:"button is-link" %>
-  <% elsif user_signed_in? && @user != current_user %>
-    <%= link_to "Conversations", conversations_path %>
+  <% elsif user_signed_in? && @user == current_user %>
   <% else %>
     <%= link_to "Sign up to send a to message #{@user.first_name}", new_user_registration_path %>
   <% end %>
 </p>
-<p>Description : <%= @user.description %> </p>
+
 <% if @user == current_user %>
   <%= link_to "Edit your Profile", edit_user_registration_path, class: "btn btn-info" %>
   <%= link_to "Create an Event", new_event_path, class: "btn btn-info" %>
