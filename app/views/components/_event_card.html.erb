@@ -1,4 +1,4 @@
-<% @events.limit(6).each do |event| %>
+<% @events.each do |event| %>
   <div class="col-md-4 mb-3 mb-lg-4 col-lg-4">
     <div class="listing-item">
 
@@ -24,11 +24,13 @@
             <% end %>
           <% end %>
 
-        <%=link_to event.category.name, root_path, class: "px-3 mb-3 category" %></a>
+        <%=link_to event.category.name, event, class: "px-3 mb-3 category" %></a>
         <h2 class="mb-1"><%= event.title %></h2>
         <span class="address"><%= event.location %></span><br>
         <%= link_to "See more", event, class: "btn-primary btn-sm round" %>
       </div>
     </div>
   </div>
-<% end %>
+  <% end %>
+
+

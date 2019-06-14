@@ -1,7 +1,9 @@
 <%= render "components/search_top" %>
 <div class="site-section bg-light">
   <div class="container">
+    <div class="overlap-category mb-4">
     <%= render 'components/categories' %>
+  </div>
     <div class="site-section" data-aos="fade">
       <div class="container">
         <div class="row align-items-center">
@@ -28,8 +30,21 @@
           </div>
         </div>
         <div class="container">
+        <div class="pagination">
           <div class="row">
             <%= render 'components/event_card' %>
+          </div>
+        </div>
+          <div class="text-center">
+            <%= will_paginate @events, renderer: BootstrapPagination::Rails %>
+          </div>
+        </div>
+     
+          <div class="text-center">
+            <%= link_to "See more events!", categories_path, class: "btn-primary btn-lg round" %>
+
+          </div>
+          </div>
           </div>
         </div>
       </div>
