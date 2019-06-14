@@ -27,16 +27,6 @@
             </p>
           </div>
         </div>
-        <% if user_signed_in? %>
-          <% @hand_selected_events.each do |selected_event| %>
-            <% if selected_event.is_still_ongoing? %>
-            <ul>
-              <li> <%= selected_event.title %></li>
-              <li> <%= selected_event.starting_date %></li>
-            </ul>
-            <% end %>
-          <% end %>
-        <% end %>
         <div class="container">
           <div class="row">
             <%= render 'components/event_card' %>
