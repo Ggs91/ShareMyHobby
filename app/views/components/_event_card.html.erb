@@ -4,7 +4,7 @@
 
         <div class="listing-image">
           <% if event.picture.attached? %>
-          <%= image_tag(event.picture, alt: 'Image', class: "img-fluid",  width: 730) %>
+          <%= image_tag event.picture.variant(combine_options: {resize: '329x283^', extent: '329x283', gravity: 'Center'}) %>
           <% else %>
           <%= image_tag("img_1.jpg", alt: "Image", class: "img-fluid")%>
           <% end %>
