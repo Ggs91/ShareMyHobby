@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <div class="container">
+      <h1> <%= @user.first_name.capitalize %> s'est inscrit(e) à : <%= @event.title %> </h1>
+      <div class="row">
+        <h3>
+          Voici ses infos :
+        </h3>
+        <p>
+          <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
+        </p>
+        <p>
+          <%= @user.email %>
+        </p>
+        <p>
+          <%= @user.department.name %>
+        </p>
+        <p>
+          À très vite sur <%= link_to "ShareMyHobby", @url %>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
