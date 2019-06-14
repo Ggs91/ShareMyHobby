@@ -20,7 +20,7 @@
     <div class="row align-items-center">
       <div class="col-md-6">
         <% if @user.profile_picture.attached? %>
-          <%= image_tag(@user.profile_picture, alt: 'Image', class: "img-fluid rounded") %>
+          <%= image_tag @user.profile_picture.variant(combine_options: {resize: '500x500^', extent: '500x500', gravity: 'Center'}) ,alt: 'User profile picture', class: "img-fluid rounded" %>
           <% else %>
               <img src="/assets/user_default.png" alt="" class="img-responsove border-raduis-3">
         <% end %>
