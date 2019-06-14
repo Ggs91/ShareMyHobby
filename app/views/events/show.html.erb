@@ -22,7 +22,7 @@
            <div class="listing-image">
           <div>
             <% if @event.picture.attached? %>
-              <%= image_tag(@event.picture, alt: 'Image', class: "img-fluid",  width: 730) %>
+              <%= image_tag @event.picture.variant(combine_options: {resize: '500x500^', extent: '500x500', gravity: 'Center'}) %>
             <% end %>
           </div>
           <div class="listing-item-content">
