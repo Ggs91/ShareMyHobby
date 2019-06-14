@@ -1,4 +1,14 @@
-Salut <%= @user.first_name %> t'es bien enregistré pour cet event!
+Salut <%= @user.first_name %> t'es bien enregistré pour cet <%= @event.title %>!
 ==============================================================
-Mettre les infos de l'event Participation
+
+Adresse : <%= @event.location.capitalize%>
+
+Date : <%= @event.start_date %>
+
+
+Durée : <% if @event.duration < 60 %><%= @event.duration %> min
+<% else %>
+<%= @event.duration / 60 %> heure(s) <%= @event.duration % 60 %> min
+<% end %>
+
 À très vite sur ShareMyHobby : <%= @url %> !

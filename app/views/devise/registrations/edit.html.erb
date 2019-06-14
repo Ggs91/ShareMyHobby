@@ -3,6 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-md-7 mb-5 mt-5" data-aos="fade">
         <div class="text-center">
+          <%= devise_error_messages! %>
 
         <% if @user.profile_picture.attached? %>
           <%= image_tag(@user.profile_picture, alt: 'profile picture', width: 200) %>
@@ -79,7 +80,7 @@
 
         <div class="form-group">
           <%= f.label :profile_picture, "Change your profile picture", class: "h4" %><br>
-          <%= f.file_field :profile_picture %>
+          <%= f.file_field :profile_picture, accept: ".png,.jpeg,.jpg" %>
         </div>
 
         <div class="text-center">
