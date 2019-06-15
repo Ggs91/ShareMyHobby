@@ -37,5 +37,5 @@ Algorithme that display on the home page a sample of the latest events that the 
 ## Authors
 * **Émilie Douvier** - https://github.com/Emilie-D
 * **Bano Traoré** - https://github.com/banotraore
-* **Georges Attala** - https://github.com/Ggs91/
+* **Georges Atalla** - https://github.com/Ggs91/
 * **Ayuma Royet** - https://github.com/tsubakiandco
