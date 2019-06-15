@@ -24,10 +24,12 @@
 
   <body>
     <%= render "components/modal/header" %>
+    <%= render "components/alert" %>
+
     <div id="content"><%= content_for?(:content) ? yield(:content) : yield %></div>
+
     <%= render "components/modal/footer" %>
     <%= render "components/scripts" %>
   </body>
 
 </html>
- 
