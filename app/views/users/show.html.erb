@@ -12,17 +12,17 @@
     </div>
   </div>
 </div>
-<br />
-<br />
-<br />
+<br/>
+<br/>
+<br/>
 <div class="site-section">
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-6">
         <% if @user.profile_picture.attached? %>
           <%= image_tag @user.profile_picture.variant(combine_options: {resize: '500x500^', extent: '500x500', gravity: 'Center'}) ,alt: 'User profile picture', class: "img-fluid rounded" %>
-          <% else %>
-              <img src="/assets/user_default.png" alt="" class="img-responsove border-raduis-3">
+        <% else %>
+          <img src="/assets/user_default.png" alt="" class="img-responsove border-raduis-3">
         <% end %>
       </div>
       <div class="col-md-5 ml-auto">
@@ -35,16 +35,14 @@
             <% end %>
           <% end %><br>
           <%= render "components/informations_users" %>
-      </div>
+        </div>
       </div>
     </div>
-    <br />
-    <br />
-    <br />
+    <br/>
+    <br/>
+    <br/>
 
-    <div class="container">
-
-    </div><br>
+    <div class="container"></div><br>
 
     <div class="container">
       <div class="row align-items-start">
@@ -53,19 +51,54 @@
             <div class="col-md-4 text-left border-primary">
               <h2 class="font-weight-light text-primary pb-3">Attended Events</h2>
             </div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam voluptates a explicabo delectus sed labore dolor enim optio odio at !
-            </p>
+
           </div>
+
+          <div class="events_attendees">
+            <% @user.attended_events.each  do |event|  %>
+
+              <div class="card" style="width: 20rem;">
+                <h5 class="card-body">
+                  <%= event.title %>
+                </h5>
+                <p class="card-text text-center">
+                  <%= event.start_date %>
+                </p>
+                <p class="card-text  text-center">
+                  <%= event.department.name %>
+                </p>
+
+              </div><br>
+            <% end %>
+
+          </div>
+
         </div>
         <div class="col">
           <div class="row mb-5">
             <div class="col-md-4 text-left border-primary">
               <h2 class="font-weight-light text-primary pb-3">Events Create</h2>
             </div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam voluptates a explicabo delectus sed labore dolor enim optio odio at!
-            </p>
+
+          </div>
+
+          <div class="events_created">
+            <% @user.administrated_events.each  do |event|  %>
+
+              <div class="card" style="width: 20rem;">
+                <h5 class="card-body">
+                  <%= event.title %>
+                </h5>
+                <p class="card-text  text-center">
+                  <%= event.start_date %>
+                </p>
+                <p class="card-text  text-center">
+                  <%= event.department.name %>
+                </p>
+
+              </div><br>
+            <% end %>
+
           </div>
         </div>
       </div>
