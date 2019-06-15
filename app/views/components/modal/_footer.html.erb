@@ -1,65 +1,68 @@
-    <footer class="site-footer">
-      <div class="container">
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
         <div class="row">
-          <div class="col-md-12">
-            <div class="row">
-              <div class="col-md-3 offset-2">
-                <h2 class="footer-heading mb-3">Your account</h2>
-                <% if user_signed_in? %>
-                <ul class="list-unstyled"><li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+          <div class="col-md-3 offset-2">
+            <h2 class="footer-heading mb-3">Your account</h2>
+            <% if user_signed_in? %>
+              <ul class="list-unstyled">
+                <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
                 <li><%= link_to('Edit registration', edit_user_registration_path) %></li>
-                <li><%= link_to('Create an event', new_event_path) %></li></ul>
-                <% else %>
+                <li><%= link_to('Create an event', new_event_path) %></li>
+              </ul>
+            <% else %>
 
-                <ul class="list-unstyled"><li><%= link_to('Login', new_user_session_path) %></li>
+              <ul class="list-unstyled">
+                <li><%= link_to('Login', new_user_session_path) %></li>
                 <li><%= link_to('Register', new_user_registration_path) %></li>
                 <li><%= link_to('Create an event', new_user_session_path) %></li>
-                <% end %>
-                </li></ul>
-              </div>
-
-              <div class="col-md-3">
-                <h2 class="footer-heading mb-3">Share My Hobby</h2>
-                <ul class="list-unstyled">
-                  <li><%= link_to "About", about_path %></li>
-                  <li><%= link_to "Contact", contact_path %> </li>
-                </ul>
-              </div>
-
-              <div class="col-md-3">
-                <h2 class="footer-heading mb-3">Follow Us</h2>
-                <% link_to "http://www.facebook.com", class: "pl-0 pr-3" %></span><%= link_to "http://www.facebook.com",  class: "pl-0 pr-3" do %>
-                  <span class="icon-facebook"></span>
-                <% end %>
-                <% link_to "http://www.twitter.com", class: "pl-0 pr-3" %></span><%= link_to "http://www.twitter.com",  class: "pl-0 pr-3" do %>
-                  <span class="icon-twitter"></span>
-                <% end %>
-                <% link_to "http://www.instagram.com", class: "pl-0 pr-3" %></span><%= link_to "http://www.instagram.com",  class: "pl-0 pr-3" do %>
-                  <span class="icon-instagram"></span>
-                <% end %>
-                <% link_to "http://www.linkedin.com", class: "pl-0 pr-3" %></span><%= link_to "http://www.linkedin.com",  class: "pl-2 pr-3" do %>
-                  <span class="icon-linkedin"></span>
-                <% end %>
-              </div>
-              
-            </div>
+              <% end %>
+            </ul>
           </div>
 
-        </div>
-        <div class="row pt-1 mt-1 text-center">
-          <div class="col-md-12">
-            <div class="border-top pt-5">
-            <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | ShareMyHobby</a>
+          <div class="col-md-3">
+            <h2 class="footer-heading mb-3">Share My Hobby</h2>
+            <ul class="list-unstyled">
+              <li><%= link_to "About", about_path %></li>
+              <li><%= link_to "Contact us","mailto:testapisandapplications@gmail.com?subject=feedback" %></li>
+            </ul>
+          </div>
 
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
+          <div class="col-md-3">
+            <h2 class="footer-heading mb-3">Follow Us</h2>
+            <% link_to "http://www.facebook.com", class: "pl-0 pr-3" %><%= link_to "http://www.facebook.com", class: "pl-0 pr-3" do %>
+              <span class="icon-facebook"></span>
+            <% end %>
+            <% link_to "http://www.twitter.com", class: "pl-0 pr-3" %><%= link_to "http://www.twitter.com", class: "pl-0 pr-3" do %>
+              <span class="icon-twitter"></span>
+            <% end %>
+            <% link_to "http://www.instagram.com", class: "pl-0 pr-3" %><%= link_to "http://www.instagram.com", class: "pl-0 pr-3" do %>
+              <span class="icon-instagram"></span>
+            <% end %>
+            <% link_to "http://www.linkedin.com", class: "pl-0 pr-3" %><%= link_to "http://www.linkedin.com", class: "pl-2 pr-3" do %>
+              <span class="icon-linkedin"></span>
+            <% end %>
           </div>
-            </div>
-          </div>
-          </div>
-        </div>
+
         </div>
       </div>
-    </footer>
+
+    </div>
+    <div class="row pt-1 mt-1 text-center">
+      <div class="col-md-12">
+        <div class="border-top pt-5">
+          <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>
+              document.write(new Date().getFullYear());
+            </script>
+            All rights reserved | ShareMyHobby
+
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

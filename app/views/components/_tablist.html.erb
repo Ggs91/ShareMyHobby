@@ -13,38 +13,36 @@
   <div id="participants" class="container tab-pane fade">
     <% @event.participants.each do |participant| %>
     <br>
-    <div class="card" style="width: 20rem;">
-      <% if participant.profile_picture.attached? %>
-      <%= image_tag(participant.profile_picture, alt: 'profile picture') %>
-      <% end %>
-      <div class="card-body">
-        <h5 class="card-title">
-          <%= participant.last_name %>
-          <%= participant.first_name %>
-        </h5>
-        <p class="card-text">
-          <p>
-             Age : 
+      <div class="card" style="width: 20rem;">
+        <% if participant.profile_picture.attached? %>
+          <%= image_tag participant.profile_picture.variant(combine_options: {resize: '256x256^', extent: '256x256', gravity: 'Center'}) ,alt: 'User profile picture', class: "img-fluid rounded" %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= participant.last_name %>
+            <%= participant.first_name %>
+          </h5>
+          <p class="card-text">
+             Age :
             <%= participant.age %>
           </p>
           <p>
-             City : 
+             City :
             <%= participant.department.name %>
           </p>
           <p>
-             Email : 
+             Email :
             <%= participant.email %>
           </p>
-        </p>
-        <a class="btn btn-primary" 
-        <%= link_to  "Profile" , user_path(participant.id) %>
-      </a>
+          <a class="btn btn-primary"
+            <%= link_to  "Profile" , user_path(participant.id) %>
+          </a>
+        </div>
+      </div>
+    <% end %>
   </div>
-</div>
-  <% end %>
-</div>
-<div id="comments" class="container tab-pane fade">
-  <br>
-  <%= render "components/comments" %>
-</div>
+  <div id="comments" class="container tab-pane fade">
+    <br>
+    <%= render "components/comments" %>
+  </div>
 </div>
