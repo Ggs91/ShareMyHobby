@@ -33,8 +33,9 @@
             <% else %>
               <%= button_to "Follow", friendships_path(user_id: @user.id), :class =>"btn btn-lg btn-primary rounded btn-block col-3" %>
             <% end %>
+            <%= render "components/informations_users" %>
+
           <% end %><br>
-          <%= render "components/informations_users" %>
         </div>
       </div>
     </div>
